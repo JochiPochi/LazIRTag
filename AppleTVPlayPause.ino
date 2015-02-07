@@ -25,7 +25,7 @@ void pulseIR(long microsecs) {
 void SendIrPacket() {
   // Serial.println("Got this far");
   // This is the code to play/pause with the Apple TV
-  while(count < 2){
+  while(count < 1){ // Only cycling once because repeating packet twice interprets as two separate commands
     Serial.println("Leader");
     pulseIR(9000);
     delayMicroseconds(4500); // leader
@@ -96,9 +96,10 @@ void SendIrPacket() {
     pulseIR(560); // stop
     
     count = count + 1;
+    delayMicroseconds(35380);
+    // Serial.println("Delay");
   }
   count = 0;
-    delayMicroseconds(35400);
 }
 
 void loop(void) {
