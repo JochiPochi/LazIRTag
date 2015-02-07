@@ -1,0 +1,28 @@
+Arena
+  Two team bases
+    Health Station
+    Mounted Gun to protect base
+      Kasey's Desk
+      Skynet
+  Cool Ambiance B)
+  
+Apparel
+  Vest with Sensors
+  
+Weapons
+  Weapon Types
+    Semi-automatic Rifle - More points, less damage
+      Trigger
+    Shotgun - More damage, less points
+      Trigger and Pump
+  Speaker
+    Shooting Sound Affect
+    Universal Alerts
+  Health Indication
+    Can heal back at base
+    Lose points for dying - have to "respawn" at health station
+  Light indicator when shooting
+
+Future Expansions
+  CTF - electronic flag system
+  Weaponized Grenade
