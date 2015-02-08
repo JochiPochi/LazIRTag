@@ -22,3 +22,7 @@ Weapons
     Can heal back at base
     Lose points for dying - have to "respawn" at health station
   Light indicator when shooting
+
+Future Expansions
+  CTF - electronic flag system
+  Weaponized Grenade
