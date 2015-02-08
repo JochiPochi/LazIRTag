@@ -1,7 +1,7 @@
 # LaZIR Tag
 Arduino based LaserTag System
 
-BOM - https://docs.google.com/a/cyphyworks.com/spreadsheets/d/1MXdYDq4qyfqy3L1gnKtGEeZ4zqiRnnMYT2sN9ClZJ-U/edit?usp=sharing
+BOM: https://docs.google.com/a/cyphyworks.com/spreadsheets/d/1MXdYDq4qyfqy3L1gnKtGEeZ4zqiRnnMYT2sN9ClZJ-U/edit?usp=sharing
 
 REFERENCE:
 
