@@ -1,0 +1,29 @@
+Gun to Player - IR
+  Leader
+  Weapon ID
+  Player ID (Shooter)
+  Weapon Battery Condition
+  Checksum
+  
+Sub-system to Central System
+  Leader
+  Message Type
+  Sender ID (Player/Health Station)
+  Destination ID (Central System)
+  Weapon ID
+  Player (Shooter/Injured)
+  Battery Condition (Weapon/Health Station)
+  Blank Byte
+  Blank Byte
+  Checksum
+  
+Central System to Sub-system
+  Leader
+  Message Type
+  Sender ID (Central System)
+  Destination ID (Player/Health Station)
+  Remaining Health (Player/Team)
+  Damage Multiplier (/null)
+  Blank Byte
+  Blank Byte
+  Checksum
