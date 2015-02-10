@@ -1,29 +1,29 @@
 Gun to Player - IR
-  Leader
-  Weapon ID
-  Player ID (Shooter)
-  Weapon Battery Condition
-  Checksum
+  1 - Leader
+  2 - Weapon ID
+  3 - Player ID (Shooter)
+  4 - Weapon Battery Condition
+  5 - Checksum
   
 Sub-system to Central System
-  Leader
-  Message Type
-  Sender ID (Player/Health Station)
-  Destination ID (Central System)
-  Weapon ID
-  Player (Shooter/Injured)
-  Battery Condition (Weapon/Health Station)
-  Blank Byte
-  Blank Byte
-  Checksum
+  1 - Leader
+  2 - Message Type
+  3 - Sender ID (Player/Health Station)
+  4 - Destination ID (Central System)
+  5 - Weapon ID
+  6 - Player (Shooter/Injured)
+  7 - Battery Condition (Weapon/Health Station)
+  8 - Blank Byte
+  9 - Blank Byte
+  10 - Checksum
   
 Central System to Sub-system
-  Leader
-  Message Type
-  Sender ID (Central System)
-  Destination ID (Player/Health Station)
-  Remaining Health (Player/Team)
-  Damage Multiplier (/null)
-  Blank Byte
-  Blank Byte
-  Checksum
+  1 - Leader
+  2 - Message Type
+  3 - Sender ID (Central System)
+  4 - Destination ID (Player/Health Station)
+  5 - Remaining Health (Player/Team)
+  6 - Damage Multiplier (/null)
+  7 - Blank Byte
+  8 - Blank Byte
+  9 - Checksum
