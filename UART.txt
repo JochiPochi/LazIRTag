@@ -1,29 +1,29 @@
 Gun to Player - IR
-  1 - Leader
-  2 - Weapon ID
-  3 - Player ID (Shooter)
-  4 - Weapon Battery Condition
-  5 - Checksum
+  1 - Leader - 6E
+  2 - Weapon ID - [A-B][0-F]
+  3 - Player ID (Shooter) - [A/B][1-F]
+  4 - Weapon Battery Condition - [00-FF]
+  5 - Checksum - FF-Sum%FF
   
 Sub-system to Central System
-  1 - Leader
-  2 - Message Type
-  3 - Sender ID (Player/Health Station)
-  4 - Destination ID (Central System)
-  5 - Weapon ID
-  6 - Player (Shooter/Injured)
-  7 - Battery Condition (Weapon/Health Station)
-  8 - Blank Byte
-  9 - Blank Byte
-  10 - Checksum
+  1 - Leader - 6E
+  2 - Message Type - 0B
+  3 - Sender ID (Player/Health Station) - [A/B](0,[1-F])
+  4 - Destination ID (Central System) - 00
+  5 - Weapon ID (/null)- ([A-B][0-F], 00)
+  6 - Player (Shooter/Injured) - [A/B][1-F]
+  7 - Battery Condition (Weapon/Health Station) - [00-FF]
+  8 - Blank Byte - 00
+  9 - Blank Byte - 00
+  10 - Checksum - FF-Sum%FF
   
 Central System to Sub-system
-  1 - Leader
-  2 - Message Type
-  3 - Sender ID (Central System)
-  4 - Destination ID (Player/Health Station)
-  5 - Remaining Health (Player/Team)
-  6 - Damage Multiplier (/null)
-  7 - Blank Byte
-  8 - Blank Byte
-  9 - Checksum
+  1 - Leader - 6E
+  2 - Message Type - 0A
+  3 - Sender ID (Central System) - 00
+  4 - Destination ID (Player/Health Station) - [A/B](0,[1-F])
+  5 - Remaining Health (Player/Team) - 0[A/B]
+  6 - Damage Multiplier (/null) - ([01-FF],00)
+  7 - Blank Byte - 00
+  8 - Blank Byte - 00
+  9 - Checksum - FF-Sum%FF
