@@ -1,0 +1,76 @@
+int sS1 = 0;
+int pSS1 = 0;
+int sS2 = 0;
+int pSS2 = 0;
+int sS3 = 0;
+int pSS3 = 0;
+
+#define switchOut1 13
+#define switchIn1 12
+#define switchOut2 11
+#define switchIn2 10
+#define switchOut3 9
+#define switchIn3 8
+
+char syncByte = 0x6E;
+char msgType = 0x0B;
+char senderID;
+char destID = 0x00;
+char weapID;
+char playerID;
+char battCond;
+char blank = 0x00;
+char checksum = (0xFF - (syncByte+msgType+senderID+destID+weapID+playerID+battCond));
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(switchOut1, OUTPUT);
+  pinMode(switchOut2, OUTPUT);
+  pinMode(switchOut3, OUTPUT);
+  digitalWrite(switchOut1, HIGH);
+  digitalWrite(switchOut2, HIGH);
+  digitalWrite(switchOut3, HIGH);
+  pinMode(switchIn1, INPUT);
+  pinMode(switchIn2, INPUT);
+  pinMode(switchIn3, INPUT);
+}
+
+void loop(){
+  sS1 = digitalRead(switchIn1);
+  sS2 = digitalRead(switchIn2);
+  sS3 = digitalRead(switchIn3);
+  if (sS1  == 1 || sS2 == 1 || sS3 == 1){
+    if (sS1 != pSS1 && sS1 == 1){
+      senderID = 0xA0;
+      weapID = 0x00;
+      playerID = 0xA9;
+      battCond = 0xFC;
+    }
+    if (sS2 != pSS2 && sS2 == 1){
+      senderID = 0xB0;
+      weapID = 0x00;
+      playerID = 0xBD;
+      battCond = 0xFE;
+    }
+    if (sS3 != pSS3 && sS3 == 1){
+      senderID = 0xA9;
+      weapID = 0xAD;
+      playerID = 0xBD;
+      battCond = 0xFF;
+    }
+    Serial.write(syncByte);
+    Serial.write(msgType);
+    Serial.write(senderID);
+    Serial.write(destID);
+    Serial.write(weapID);
+    Serial.write(playerID);
+    Serial.write(battCond);
+    Serial.write(blank);
+    Serial.write(blank);
+    Serial.write(checksum);
+    delay(500);
+  }
+  pSS1 = sS1; 
+  pSS2 = sS2; 
+  pSS3 = sS3;
+}
