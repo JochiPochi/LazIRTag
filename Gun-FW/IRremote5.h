@@ -34,19 +34,19 @@ public:
   int rawlen; // Number of records in rawbuf.
 };
 
-// Values for decode_type
-#define NEC 1
-#define SONY 2
-#define RC5 3
-#define RC6 4
-#define DISH 5
-#define SHARP 6
-#define PANASONIC 7
-#define JVC 8
-#define SANYO 9
-#define MITSUBISHI 10
-#define LazIR 11
-#define UNKNOWN -1
+//// Values for decode_type
+//#define NEC 1
+//#define SONY 2
+//#define RC5 3
+//#define RC6 4
+//#define DISH 5
+//#define SHARP 6
+//#define PANASONIC 7
+//#define JVC 8
+//#define SANYO 9
+//#define MITSUBISHI 10
+//#define LazIR 11
+//#define UNKNOWN -1
 
 // Decoded value for NEC when a repeat code is received
 #define REPEAT 0xffffffff
@@ -71,8 +71,8 @@ private:
 //  long decodeRC6(decode_results *results);
 //  long decodePanasonic(decode_results *results);
 //  long decodeJVC(decode_results *results);
-  long decodeHash(decode_results *results);
-  int compare(unsigned int oldval, unsigned int newval);
+//  long decodeHash(decode_results *results);
+//  int compare(unsigned int oldval, unsigned int newval);
 
 } 
 ;
@@ -93,7 +93,7 @@ public:
   // Neither Sanyo nor Mitsubishi send is implemented yet
   //  void sendSanyo(unsigned long data, int nbits);
   //  void sendMitsubishi(unsigned long data, int nbits);
-  void sendRaw(unsigned int buf[], int len, int hz);
+  //void sendRaw(unsigned int buf[], int len, int hz);
   void sendLazIR(char buf[],int len, int hz);
 //  void sendRC5(unsigned long data, int nbits);
 //  void sendRC6(unsigned long data, int nbits);
