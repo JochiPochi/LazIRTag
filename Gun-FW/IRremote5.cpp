@@ -22,7 +22,8 @@
 // Provides ISR
 #include <avr/interrupt.h>
 
-volatile irparams_t irparams;
+//volatile irparams_t irparams;
+//volatile irSerial_t irSerial;
 
 // These versions of MATCH, MATCH_MARK, and MATCH_SPACE are only for debugging.
 // To use them, set DEBUG in IRremoteInt.h
@@ -136,7 +137,8 @@ void IRsend::sendLazIR(char buf[],int len, int hz)
       } 
     }
   }
-  space(0); // Just to be sure
+  mark(LazIR_HDR_MARK);
+  space(LazIR_HDR_SPACE); // Just to be sure
 }
 
 //// Note: first bit must be a one (start bit)
@@ -300,12 +302,13 @@ void IRrecv::enableIRIn() {
   //Prescale /8 (16M/8 = 0.5 microseconds per tick)
   // Therefore, the timer interval can range from 0.5 to 128 microseconds
   // depending on the reset value (255 to 0)
-  TIMER_CONFIG_NORMAL();
+  //TIMER_CONFIG_NORMAL();
+  STATE_CHANGE_ISR_CONFIG();
 
   //Timer2 Overflow Interrupt Enable
-  TIMER_ENABLE_INTR;
+  //TIMER_ENABLE_INTR;
 
-  TIMER_RESET;
+  //TIMER_RESET;
 
   sei();  // enable interrupts
 
@@ -314,7 +317,7 @@ void IRrecv::enableIRIn() {
   irparams.rawlen = 0;
 
   // set pin modes
-  pinMode(irparams.recvpin, INPUT);
+  pinMode(2, INPUT);
 }
 
 // enable/disable blinking of pin 13 on IR processing
@@ -324,6 +327,42 @@ void IRrecv::blink13(int blinkflag)
   if (blinkflag)
     pinMode(BLINKLED, OUTPUT);
 }
+
+//Change of pin interrupt
+ISR(EXT_INT0_vect)
+{
+  uint16_t cTime,dTime;
+  boolean currentState = PINB | _BV(2);
+  cTime = micros();
+  sei();
+  dTime = cTime-bitBuff.prevTime;
+  //Serial.print('a');
+  if (currentState < bitBuff.prevTime){
+    if (dTime > LazIR_HDR_MARK*TOLERANCE/10){
+      char a = 2;
+      //bitBuff.Push(a);
+    }
+    else if (dTime > LazIR_ONE_MARK*TOLERANCE/10){
+      char a = 1;
+      //bitBuff.Push(a);
+    }
+    else if (dTime > LazIR_ZERO_MARK*TOLERANCE/10){
+      char a = 0;
+      //bitBuff.Push(a);
+    }
+  }
+  bitBuff.lastState = currentState;
+  bitBuff.prevTime = cTime;
+  //char a = bitBuff.Pop();
+  static boolean state = 0;
+  //state = !state;
+  //PORTC |= _BV(0);
+//  if (a == 2) digitalWrite(13, LOW);
+//  else if (a==1) digitalWrite(13,HIGH);
+//  else if (a==0) digitalWrite(13,LOW);
+  //somerhing;
+}
+
 
 // TIMER2 interrupt code to collect raw data.
 // Widths of alternating SPACE, MARK are recorded in rawbuf.

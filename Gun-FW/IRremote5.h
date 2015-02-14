@@ -12,8 +12,16 @@
  * JVC and Panasonic protocol added by Kristian Lauszus (Thanks to zenwheel and other people at the original blog post)
  */
 
+#include <Arduino.h>
+#include "CircularBuffer.h"
 #ifndef IRremote_h
 #define IRremote_h
+
+// Some useful constants
+
+#define USECPERTICK 50  // microseconds per clock interrupt tick
+#define RAWBUF 100 // Length of raw duration buffer
+
 
 // The following are compile-time library options.
 // If you change them, recompile the library.
@@ -73,7 +81,6 @@ private:
 //  long decodeJVC(decode_results *results);
 //  long decodeHash(decode_results *results);
 //  int compare(unsigned int oldval, unsigned int newval);
-
 } 
 ;
 
@@ -108,10 +115,7 @@ public:
 }
 ;
 
-// Some useful constants
 
-#define USECPERTICK 50  // microseconds per clock interrupt tick
-#define RAWBUF 100 // Length of raw duration buffer
 
 // Marks tend to be 100us too long, and spaces 100us too short
 // when received due to sensor lag.

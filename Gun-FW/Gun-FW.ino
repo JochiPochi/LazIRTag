@@ -11,13 +11,16 @@
 int RECV_PIN = 11;
 
 //IRrecv irrecv(RECV_PIN);
-IRsend irsend;
+//IRsend irsend;
+IRrecv ohhyeah(5);
 //decode_results results;
 
 void setup()
 {
   Serial.begin(9600);
+  //ohhyeah.enableIRIn();
   //irrecv.enableIRIn(); // Start the receiver
+  pinMode(13,OUTPUT);
 }
 
 void loop() {
@@ -25,7 +28,7 @@ void loop() {
   //  Serial.println(results.value, HEX);
   //  irrecv.resume(); // Receive the next value
   //}
-  char a[] = {0xAA,0xBB,0x1,0x23};
-  irsend.sendLazIR(a,sizeof(a),38);
+  //char a[] = {0xAA};
+  //irsend.sendLazIR(a,sizeof(a),38);
 }
 
