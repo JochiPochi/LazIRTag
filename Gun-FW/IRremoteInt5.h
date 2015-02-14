@@ -92,11 +92,11 @@
 #endif
 
 //Pulse parameters for LazIR
-#define LazIR_HDR_MARK	1000
-#define LazIR_HDR_SPACE	200
-#define LazIR_ONE_MARK	500
-#define LazIR_ZERO_MARK	300
-#define LazIR_RPT_LENGTH 200
+#define LazIR_HDR_MARK	1600
+#define LazIR_HDR_SPACE	400
+#define LazIR_ONE_MARK	1000
+#define LazIR_ZERO_MARK	600
+#define LazIR_RPT_LENGTH 400
 #define LazIR_DOUBLE_SPACE_USECS  500
 
 //// Pulse parms are *50-100 for the Mark and *50+100 for the space
@@ -174,7 +174,7 @@
 //#define SHARP_BITS 15
 //#define DISH_BITS 16
 
-#define TOLERANCE 25  // percent tolerance in measurements
+#define TOLERANCE 90  // percent tolerance in measurements
 #define LTOL (1.0 - TOLERANCE/100.) 
 #define UTOL (1.0 + TOLERANCE/100.) 
 
@@ -203,13 +203,25 @@ typedef struct {
   uint8_t rcvstate;          // state machine
   uint8_t blinkflag;         // TRUE to enable blinking of pin 13 on IR processing
   unsigned int timer;     // state timer, counts 50uS ticks.
-  unsigned int rawbuf[RAWBUF]; // raw data
+  unsigned int rawbuf[50]; // raw data
   uint8_t rawlen;         // counter of entries in rawbuf
 } 
 irparams_t;
 
+
+//typedef struct {
+//  uint32_t prevTime;
+  CircularBuffer <char,uint16_t,50> bitBuff;
+//  boolean lastState;
+//} 
+//irSerial_t;
+
+
+
+
 // Defined in IRremote.cpp
 extern volatile irparams_t irparams;
+//extern volatile irSerial_t irSerial;
 
 // IR detector output is active low
 #define MARK  0
@@ -260,8 +272,8 @@ extern volatile irparams_t irparams;
   TCNT2 = 0; \
 })
 #define STATE_CHANGE_ISR_CONFIG() ({ \
-  EIMSK |= (1<<INT0); \
-  EICRA |= (1<<ISC00); \
+  EIMSK |= _BV(INT0); \
+  EICRA |= 0x03l; \//_BV(ISC00); \
 })
 //#endif
 //#if defined(CORE_OC2B_PIN)
