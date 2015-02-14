@@ -11,6 +11,7 @@
 int RECV_PIN = 11;
 
 //IRrecv irrecv(RECV_PIN);
+
 //IRsend irsend;
 IRrecv ohhyeah(5);
 //decode_results results;
@@ -18,9 +19,8 @@ IRrecv ohhyeah(5);
 void setup()
 {
   Serial.begin(9600);
-  //ohhyeah.enableIRIn();
+  ohhyeah.enableIRIn();
   //irrecv.enableIRIn(); // Start the receiver
-  pinMode(13,OUTPUT);
 }
 
 void loop() {
