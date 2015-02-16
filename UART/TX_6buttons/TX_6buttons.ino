@@ -115,7 +115,7 @@ void loop(){
       damMult = 0x02;
     }
 
-    //for (int i = 1; i == 20; i++){
+//    for (int i = 1; i == 20; i++){
       if (msgType == 0x0A){
         checksum = (0xFF - (syncByte+msgType+senderID+destID+remHealth+damMult));
         Serial.write(syncByte); Serial.print(syncByte, HEX);
@@ -127,10 +127,10 @@ void loop(){
         Serial.write(blank);
         Serial.write(blank);
         Serial.write(checksum);
-        //delay(1);
-      //}
+//        delay(1);
+//      }
     }
-    //for (int i = 1; i == 20; i++){
+//    for (int i = 1; i == 20; i++){
       if (msgType == 0x0B){
         checksum = (0xFF - (syncByte+msgType+senderID+destID+weapID+playerID+battCond));
         Serial.write(syncByte); // Send packet with customized info based on button
@@ -143,8 +143,8 @@ void loop(){
         Serial.write(blank);
         Serial.write(blank);
         Serial.write(checksum);
-        //delay(1);
-      //}
+//        delay(1);
+//      }
     }
   }
   // Update Switch State Variables

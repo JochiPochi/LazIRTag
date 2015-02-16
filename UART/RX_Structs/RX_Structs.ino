@@ -106,7 +106,6 @@ void loop() {
       Serial.print("Checksum:"); 
       Serial.print(" "); 
       Serial.println(incomingA.checksum, HEX);
-      delay(
     }
     if (mestyp == 0x0B){
       Serial.print("Sync Byte:"); 
@@ -139,7 +138,6 @@ void loop() {
       Serial.print("Checksum:"); 
       Serial.print(" "); 
       Serial.println(incomingB.checksum, HEX);
-      delay(
     }
     Serial.println("");
     packetLen = 0;
