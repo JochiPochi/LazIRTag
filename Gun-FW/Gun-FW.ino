@@ -28,7 +28,12 @@ void loop() {
   //  Serial.println(results.value, HEX);
   //  irrecv.resume(); // Receive the next value
   //}
-  //char a[] = {0xAA};
+  if (ohhyeah.serialAvailable()){
+    char h = ohhyeah.getByte();
+    Serial.println(h);
+  }
+  delay(1000);
+  char a[] = {0xAA};
   //irsend.sendLazIR(a,sizeof(a),38);
 }
 

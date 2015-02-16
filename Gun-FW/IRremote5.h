@@ -68,6 +68,8 @@ public:
   int decode(decode_results *results);
   void enableIRIn();
   void resume();
+  uint8_t getByte();
+  uint8_t serialAvailable();
 private:
   // These are called by decode
 //  int getRClevel(decode_results *results, int *offset, int *used, int t1);

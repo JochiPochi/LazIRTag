@@ -23,7 +23,7 @@
 #include <avr/interrupt.h>
 
 volatile irparams_t irparams;
-//volatile irSerial_t irSerial;
+irSerial_t irSerial;
 
 
 void IRsend::sendLazIR(char buf[],int len, int hz){
@@ -73,13 +73,13 @@ void IRsend::enableIROut(int khz) {
   // A few hours staring at the ATmega documentation and this will all make sense.
   // See my Secrets of Arduino PWM at http://arcfn.com/2009/07/secrets-of-arduino-pwm.html for details.
 
-  
+
   // Disable the Timer2 Interrupt (which is used for receiving IR)
   TIMER_DISABLE_INTR; //Timer2 Overflow Interrupt
-  
+
   pinMode(TIMER_PWM_PIN, OUTPUT);
   digitalWrite(TIMER_PWM_PIN, LOW); // When not sending PWM, we want it low
-  
+
   // COM2A = 00: disconnect OC2A
   // COM2B = 00: disconnect OC2B; to send signal set to 10: OC2B non-inverted
   // WGM2 = 101: phase-correct PWM with OCRA as top
@@ -138,43 +138,97 @@ void IRrecv::enableIRIn() {
 //Change of pin interrupt
 ISR(INT0_vect)
 {
-  uint16_t cTime,dTime;
-  //boolean currentState = PINB | _BV(2);
+  uint32_t cTime,dTime;
+  boolean currentState = PIND & _BV(2);
   cTime = micros();
   sei();
-  dTime = cTime-bitBuff.prevTime;
-  //Serial.print('a');
-//  if (currentState < bitBuff.prevTime){
-//    if (dTime > LazIR_HDR_MARK*TOLERANCE/10){
-//      char a = 2;
-//      //bitBuff.Push(a);
-//    }
-//    else if (dTime > LazIR_ONE_MARK*TOLERANCE/10){
-//      char a = 1;
-//      //bitBuff.Push(a);
-//    }
-//    else if (dTime > LazIR_ZERO_MARK*TOLERANCE/10){
-//      char a = 0;
-//      //bitBuff.Push(a);
-//    }
-//  }
-  //bitBuff.lastState = currentState;
-  bitBuff.prevTime = cTime;
+  dTime = cTime-irSerial.prevTime;
+  //  if (currentState){
+  //Serial.print(int(currentState));
+  //  }
+  if (currentState < irSerial.lastState && !irSerial.bitBuff.IsFull()){
+    //Serial.println(int(dTime));
+    if (dTime > LazIR_HDR_MARK-TOLERANCE){
+      char a = 2;
+      irSerial.bitBuff.Push(a);
+    }
+    else if (dTime > LazIR_ONE_MARK-TOLERANCE){
+      char a = 1;
+      irSerial.bitBuff.Push(a);
+    }
+    else if (dTime > LazIR_ZERO_MARK-TOLERANCE){
+      char a = 0;
+      irSerial.bitBuff.Push(a);
+    }
+    if (irSerial.bitBuff.GetFront() != 2){
+      irSerial.bitBuff.Pop();
+    }
+//        int a = irSerial.bitBuff.GetBack();
+//        Serial.println(a);
+  }
+  irSerial.lastState = currentState;
+  irSerial.prevTime = cTime;
+  if (irSerial.bitBuff.GetFront()==2 && irSerial.bitBuff.GetSize()>=BITS_PER_MESS){
+    //irSerial.bitBuff.Pop();
+    uint8_t message[BITS_PER_MESS] = {};
+    for(int i=0;i<BITS_PER_MESS;i++){
+      message[i] = irSerial.bitBuff.Pop();
+      //Serial.print(message[i]);
+    }
+    if (!irSerial.byteBuff.IsFull()){  
+      //Serial.println('a');
+      for(int j=0;j<MESSAGE_LENGTH;j++){
+        uint8_t assembledByte = 0;
+        int bitPlace = 1;
+        for(int i=1+j*8;i<9+j*8;i++){
+          if (message[i])
+            assembledByte |= (1 << bitPlace);
+            bitPlace++;
+        }
+        irSerial.byteBuff.Push(assembledByte);
+        //uint8_t a = irSerial.byteBuff.Pop();
+        //Serial.println(a);
+      }
+    }
+  }
+
   //char a = bitBuff.Pop();
   //PORTC |= _BV(0);
-//  if (a == 2) digitalWrite(13, LOW);
-//  else if (a==1) digitalWrite(13,HIGH);
-//  else if (a==0) digitalWrite(13,LOW);
+  //  if (a == 2) digitalWrite(13, HIGH);
+  //  else if (a==1) digitalWrite(13,LOW);
+  //  else if (a==0) digitalWrite(13,LOW);
+  //digitalWrite(13,currentState);
   //somerhing;
- digitalWrite(13, !digitalRead(13));
+  //Serial.println(dTime);
+  //digitalWrite(13, !digitalRead(13));
+  //Serial.println(micros()-cTime);
+
 }
 
+uint8_t IRrecv::getByte(){
+  uint8_t Byte;
+  cli();
+  if(!irSerial.byteBuff.IsEmpty()){
+    Byte = irSerial.byteBuff.Pop();
+  }
+  sei();
+  return Byte;
+}
+
+uint8_t IRrecv::serialAvailable(){
+  uint8_t availability;
+  cli();
+  availability = irSerial.byteBuff.IsEmpty();
+  sei();
+  return availability;
+}
 
 
 void IRrecv::resume() {
   irparams.rcvstate = STATE_IDLE;
   irparams.rawlen = 0;
 }
+
 
 
 

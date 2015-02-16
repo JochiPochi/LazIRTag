@@ -1,18 +1,16 @@
 #ifndef CircularBUFFER_H_
 #define CircularBUFFER_H_
 
-template <typename T, typename IndexType, unsigned sz> class CircularBuffer {
+template <typename Type, typename IndexType, unsigned sz> class CircularBuffer {
 public:
-  volatile T               m_buffer[sz];
+  volatile Type            m_buffer[sz];
   volatile IndexType       m_start, m_end,buf_size;
-  volatile uint32_t        prevTime;
-  volatile boolean         lastState;
 
   CircularBuffer() {
     buf_size = m_start = m_end = 0;
   }
 
-  void Push(T element) {
+  void Push(Type element) {
     m_buffer[m_end] = element;
     if(m_end == sz - 1)
       m_end = 0;
@@ -21,8 +19,7 @@ public:
     buf_size++;
   }
 
-
-  boolean PushBuffer(T *elements, unsigned size) { //return true if no overflow
+  boolean PushBuffer(Type *elements, unsigned size) { //return true if no overflow
     buf_size += size;
     if(size == 0) {
       return true;
@@ -45,25 +42,42 @@ public:
     return true;
   }
 
-  T GetFront() {
+  Type GetFront() {
     return m_buffer[m_start];
   }
+  
+  Type GetBack() {
+    if(m_end){
+      return m_buffer[m_end-1];
+    }
+    else {
+      return m_buffer[sz-1];
+    }
+  }
 
-  T Pop() {
-    T element;
-    element = m_buffer[m_start];
-    buf_size--;
-    if(m_start == sz - 1)
-      m_start = 0;
-    else
-      m_start++;
-    return element;
+  Type Pop() {
+    Type element;
+    if(buf_size > 0){
+      element = m_buffer[m_start];
+      buf_size--;
+      if(m_start == sz - 1)
+        m_start = 0;
+      else
+        m_start++;
+      return element;
+    }
+    else {
+      return 0;
+    }
+  }
+  
+  IndexType GetSize() {
+    return buf_size;
   }
 
   inline boolean IsEmpty() {
     return (m_end == m_start);
   }
-
 
   boolean IsFull() {
     boolean full;

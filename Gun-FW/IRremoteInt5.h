@@ -54,8 +54,12 @@
 #define LazIR_ZERO_MARK	600
 #define LazIR_RPT_LENGTH 400
 #define LazIR_DOUBLE_SPACE_USECS  500
+#define MESSAGE_LENGTH 2
+#define BITS_PER_MESS (MESSAGE_LENGTH*8+1)
 
-#define TOLERANCE 90  // percent tolerance in measurements
+
+
+#define TOLERANCE 20  // microseconds
 #define LTOL (1.0 - TOLERANCE/100.) 
 #define UTOL (1.0 + TOLERANCE/100.) 
 
@@ -83,12 +87,13 @@ typedef struct {
 irparams_t;
 
 
-//typedef struct {
-//  uint32_t prevTime;
-  CircularBuffer <char,uint16_t,50> bitBuff;
-//  boolean lastState;
-//} 
-//irSerial_t;
+typedef struct {
+  volatile uint32_t prevTime;
+  CircularBuffer <boolean,uint16_t,100> bitBuff;
+  CircularBuffer <uint8_t,uint16_t,50> byteBuff;
+  volatile boolean lastState;
+} 
+irSerial_t;
 
 
 // Defined in IRremote.cpp
