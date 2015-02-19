@@ -22,16 +22,15 @@
 // Provides ISR
 #include <avr/interrupt.h>
 
-//volatile irparams_t irparams;
 irSerial_t irSerial;
 
 
 void IRsend::sendLazIR(char buf[],int len, int hz){
   enableIROut(hz);
-  mark(LazIR_HDR_MARK);
-  space(LazIR_HDR_SPACE);
   for (int j = 0; j < len; j++) {
-    for (byte i = 10000000; i > 0; i >>= 1) {
+    mark(LazIR_HDR_MARK);
+    space(LazIR_HDR_SPACE);
+    for (byte i = 0b00000001; i > 0; i <<= 1) {
       if (buf[j] & i) {
         mark(LazIR_ONE_MARK);
         space(LazIR_RPT_LENGTH);
@@ -42,8 +41,6 @@ void IRsend::sendLazIR(char buf[],int len, int hz){
       } 
     }
   }
-  mark(LazIR_HDR_MARK);
-  space(LazIR_HDR_SPACE); // Just to be sure
 }
 
 void IRsend::mark(int time) {
@@ -97,14 +94,7 @@ IRrecv::IRrecv()
   //cli();
   EIMSK |= _BV(INT0); 
   EICRA |= _BV(ISC00);  
-  //Timer2 Overflow Interrupt Enable
-  //TIMER_ENABLE_INTR;
-  //TIMER_RESET;
   sei();  // enable interrupts
-  // initialize state machine variables
-//  irparams.rcvstate = STATE_IDLE;
-//  irparams.rawlen = 0;
-  // set pin modes
   pinMode(2, INPUT);
   digitalWrite(2, HIGH);
   pinMode(13,OUTPUT);

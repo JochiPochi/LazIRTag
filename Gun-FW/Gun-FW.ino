@@ -19,28 +19,22 @@ IRrecv ohhyeah;
 void setup()
 {
   Serial.begin(9600);
-  ohhyeah.enableIRin();
+  //ohhyeah.enableIRin();
   //irrecv.enableIRIn(); // Start the receiver
 }
 
 void loop() {
-  //if (irrecv.decode(&results)) {
-  //  Serial.println(results.value, HEX);
-  //  irrecv.resume(); // Receive the next value
-  //}
-  //if (ohhyeah.serialAvailable()){
-  //  char h = ohhyeah.getByte();
-  //  Serial.println(h);
-  //}
   char mau;
   //cli();
   while(ohhyeah.serialAvailable()){
     mau = ohhyeah.getByte();
     Serial.print(mau);
   }
-  delay(5000);
-  Serial.println();
-  //char a[] = {0xAA};
+  //Serial.println();
+  //char a[] = {'a','b','h','&','O','#'};
   //irsend.sendLazIR(a,sizeof(a),38);
+  //delay(5000);
+  
+  
 }
 
