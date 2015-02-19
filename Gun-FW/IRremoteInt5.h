@@ -89,20 +89,19 @@ typedef struct {
 irparams_t;
 
 
-typedef struct {
-  volatile uint32_t prevTime;
-  CircularBuffer <boolean,uint16_t,100> bitBuff;
-  CircularBuffer <uint8_t,uint16_t,50> byteBuff;
-  uint8_t byteFactory[8];
-  uint8_t bytePos;
-  volatile boolean lastState;
-} 
-irSerial_t;
+//typedef struct {
+//  volatile uint32_t prevTime;
+//  //CircularBuffer <boolean,uint16_t,100> bitBuff;
+//  CircularBuffer <uint8_t,uint16_t,200> byteBuff;
+//  volatile uint8_t byteFactory;
+//  volatile uint8_t bytePos;
+//  volatile boolean lastState;
+//} 
+//irSerial_t;
 
 
 // Defined in IRremote.cpp
-extern volatile irparams_t irparams;
-//extern volatile irSerial_t irSerial;
+//extern volatile irparams_t irparams;
 
 // IR detector output is active low
 #define MARK  0
@@ -126,47 +125,14 @@ extern volatile irparams_t irparams;
   OCR2B = pwmval / 3; \
 })
 #define TIMER_COUNT_TOP      (SYSCLOCK * USECPERTICK / 1000000)
-//#if (TIMER_COUNT_TOP < 256)
-//#define TIMER_CONFIG_NORMAL() ({ \
-//  TCCR2A = _BV(WGM21); \
-//  TCCR2B = _BV(CS20); \
-//  OCR2A = TIMER_COUNT_TOP; \
-//  TCNT2 = 0; \
-//})
-//#else
 #define TIMER_CONFIG_NORMAL() ({ \
   TCCR2A = _BV(WGM21); \
   TCCR2B = _BV(CS21); \
   OCR2A = TIMER_COUNT_TOP / 8; \
   TCNT2 = 0; \
 })
-//#define STATE_CHANGE_ISR_CONFIG() ({ \
-//  EIMSK |= _BV(INT0); \
-//  EICRA |= 0x31; \ //_BV(ISC01); \ //0x03l; \//_BV(ISC00); \
-//})
 #define TIMER_PWM_PIN        3  /* Arduino Duemilanove, Diecimila, LilyPad, etc */
 #endif
-
-
-//// defines for blinking the LED
-//#if defined(CORE_LED0_PIN)
-//#define BLINKLED       CORE_LED0_PIN
-//#define BLINKLED_ON()  (digitalWrite(CORE_LED0_PIN, HIGH))
-//#define BLINKLED_OFF() (digitalWrite(CORE_LED0_PIN, LOW))
-//#elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
-//#define BLINKLED       13
-//#define BLINKLED_ON()  (PORTB |= B10000000)
-//#define BLINKLED_OFF() (PORTB &= B01111111)
-//#elif defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644__)
-//#define BLINKLED       0
-//#define BLINKLED_ON()  (PORTD |= B00000001)
-//#define BLINKLED_OFF() (PORTD &= B11111110)
-//#else
-//#define BLINKLED       13
-//#define BLINKLED_ON()  (PORTB |= B00100000)
-//#define BLINKLED_OFF() (PORTB &= B11011111)
-//#endif
-
 #endif
 
 

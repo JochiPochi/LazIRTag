@@ -63,26 +63,16 @@ public:
 class IRrecv
 {
 public:
-  IRrecv(int recvpin);
-  void blink13(int blinkflag);
-  int decode(decode_results *results);
-  void enableIRIn();
-  void resume();
+  IRrecv();
   uint8_t getByte();
   uint8_t serialAvailable();
 private:
-  // These are called by decode
-//  int getRClevel(decode_results *results, int *offset, int *used, int t1);
-//  long decodeNEC(decode_results *results);
-//  long decodeSony(decode_results *results);
-//  long decodeSanyo(decode_results *results);
-//  long decodeMitsubishi(decode_results *results);
-//  long decodeRC5(decode_results *results);
-//  long decodeRC6(decode_results *results);
-//  long decodePanasonic(decode_results *results);
-//  long decodeJVC(decode_results *results);
-//  long decodeHash(decode_results *results);
-//  int compare(unsigned int oldval, unsigned int newval);
+  volatile uint32_t prevTime;
+  //CircularBuffer <boolean,uint16_t,100> bitBuff;
+  CircularBuffer <uint8_t,uint16_t,200> byteBuff;
+  volatile uint8_t byteFactory;
+  volatile uint8_t bytePos;
+  volatile boolean lastState;
 } 
 ;
 

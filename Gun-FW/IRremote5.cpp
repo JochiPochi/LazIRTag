@@ -22,7 +22,7 @@
 // Provides ISR
 #include <avr/interrupt.h>
 
-volatile irparams_t irparams;
+//volatile irparams_t irparams;
 irSerial_t irSerial;
 
 
@@ -73,7 +73,6 @@ void IRsend::enableIROut(int khz) {
   // A few hours staring at the ATmega documentation and this will all make sense.
   // See my Secrets of Arduino PWM at http://arcfn.com/2009/07/secrets-of-arduino-pwm.html for details.
 
-
   // Disable the Timer2 Interrupt (which is used for receiving IR)
   TIMER_DISABLE_INTR; //Timer2 Overflow Interrupt
 
@@ -91,49 +90,25 @@ void IRsend::enableIROut(int khz) {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
-
-IRrecv::IRrecv(int recvpin)
-{
-  irparams.recvpin = recvpin;
-  irparams.blinkflag = 0;
-}
-
 // initialization
-void IRrecv::enableIRIn() {
+
+IRrecv::IRrecv()
+{
   //cli();
-  // setup pulse clock timer interrupt
-  //Prescale /8 (16M/8 = 0.5 microseconds per tick)
-  // Therefore, the timer interval can range from 0.5 to 128 microseconds
-  // depending on the reset value (255 to 0)
-  //TIMER_CONFIG_NORMAL();
-  //STATE_CHANGE_ISR_CONFIG()
   EIMSK |= _BV(INT0); 
   EICRA |= _BV(ISC00);  
-
   //Timer2 Overflow Interrupt Enable
   //TIMER_ENABLE_INTR;
-
   //TIMER_RESET;
-
   sei();  // enable interrupts
-
   // initialize state machine variables
-  irparams.rcvstate = STATE_IDLE;
-  irparams.rawlen = 0;
-
+//  irparams.rcvstate = STATE_IDLE;
+//  irparams.rawlen = 0;
   // set pin modes
   pinMode(2, INPUT);
   digitalWrite(2, HIGH);
   pinMode(13,OUTPUT);
 }
-
-// enable/disable blinking of pin 13 on IR processing
-//void IRrecv::blink13(int blinkflag)
-//{
-//  irparams.blinkflag = blinkflag;
-//  if (blinkflag)
-//    pinMode(BLINKLED, OUTPUT);
-//}
 
 //Change of pin interrupt
 ISR(INT0_vect)
@@ -141,68 +116,33 @@ ISR(INT0_vect)
   uint32_t cTime,dTime;
   boolean currentState = PIND & _BV(2);
   cTime = micros();
-  sei();
+  //sei();
   dTime = cTime-irSerial.prevTime;
-  //  if (currentState){
-  //Serial.print(int(currentState));
-  //  }
-  if (currentState < irSerial.lastState && !irSerial.bitBuff.IsFull()){
+  if (currentState){
+  }
+  if (currentState < irSerial.lastState && !irSerial.byteBuff.IsFull()){
     //Serial.println(int(dTime));
-    if (dTime > LazIR_HDR_MARK-TOLERANCE){
-      char a = 2;
-      irSerial.bitBuff.Push(a);
+    if (dTime > LazIR_HDR_MARK-TOLERANCE || irSerial.bytePos > 8){
+      irSerial.bytePos = 0;
+      irSerial.byteFactory = 0;
     }
     else if (dTime > LazIR_ONE_MARK-TOLERANCE){
-      char a = 1;
-      irSerial.bitBuff.Push(a);
+      irSerial.byteFactory |= (1 << irSerial.bytePos);
+      irSerial.bytePos++;
     }
     else if (dTime > LazIR_ZERO_MARK-TOLERANCE){
-      char a = 0;
-      irSerial.bitBuff.Push(a);
+      irSerial.bytePos++;
     }
-    if (irSerial.bitBuff.GetFront() != 2){
-      irSerial.bitBuff.Pop();
+    if (irSerial.bytePos == 8){
+      irSerial.byteBuff.Push(irSerial.byteFactory);
+      irSerial.bytePos = 0;
+      irSerial.byteFactory = 0;
+      //int a = irSerial.byteBuff.Pop();
+      //Serial.println(a);
     }
-//        int a = irSerial.bitBuff.GetBack();
-//        Serial.println(a);
   }
   irSerial.lastState = currentState;
   irSerial.prevTime = cTime;
-  if (irSerial.bitBuff.GetFront()==2 && irSerial.bitBuff.GetSize()>=BITS_PER_MESS){
-    //irSerial.bitBuff.Pop();
-    uint8_t message[BITS_PER_MESS] = {};
-    for(int i=0;i<BITS_PER_MESS;i++){
-      message[i] = irSerial.bitBuff.Pop();
-      //Serial.print(message[i]);
-    }
-    if (!irSerial.byteBuff.IsFull()){  
-      //Serial.println('a');
-      for(int j=0;j<MESSAGE_LENGTH;j++){
-        uint8_t assembledByte = 0;
-        int bitPlace = 1;
-        for(int i=1+j*8;i<9+j*8;i++){
-          if (message[i])
-            assembledByte |= (1 << bitPlace);
-            bitPlace++;
-        }
-        irSerial.byteBuff.Push(assembledByte);
-        //uint8_t a = irSerial.byteBuff.Pop();
-        //Serial.println(a);
-      }
-    }
-  }
-
-  //char a = bitBuff.Pop();
-  //PORTC |= _BV(0);
-  //  if (a == 2) digitalWrite(13, HIGH);
-  //  else if (a==1) digitalWrite(13,LOW);
-  //  else if (a==0) digitalWrite(13,LOW);
-  //digitalWrite(13,currentState);
-  //somerhing;
-  //Serial.println(dTime);
-  //digitalWrite(13, !digitalRead(13));
-  //Serial.println(micros()-cTime);
-
 }
 
 uint8_t IRrecv::getByte(){
@@ -218,17 +158,7 @@ uint8_t IRrecv::getByte(){
 uint8_t IRrecv::serialAvailable(){
   uint8_t availability;
   cli();
-  availability = irSerial.byteBuff.IsEmpty();
+  availability = !irSerial.byteBuff.IsEmpty();
   sei();
   return availability;
 }
-
-
-void IRrecv::resume() {
-  irparams.rcvstate = STATE_IDLE;
-  irparams.rawlen = 0;
-}
-
-
-
-

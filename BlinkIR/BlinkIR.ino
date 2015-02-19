@@ -41,7 +41,7 @@ void loop() {
   delay(2000);               // wait for a second
   }
   else {
-  char a[] = {'a','b'};
+  char a[] = {'a'};
   sendLazIR(a,sizeof(a),38);
   delay(2000);
   }

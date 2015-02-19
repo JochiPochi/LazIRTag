@@ -13,13 +13,13 @@ int RECV_PIN = 11;
 //IRrecv irrecv(RECV_PIN);
 
 //IRsend irsend;
-IRrecv ohhyeah(5);
+IRrecv ohhyeah;
 //decode_results results;
 
 void setup()
 {
   Serial.begin(9600);
-  ohhyeah.enableIRIn();
+  ohhyeah.enableIRin();
   //irrecv.enableIRIn(); // Start the receiver
 }
 
@@ -28,12 +28,19 @@ void loop() {
   //  Serial.println(results.value, HEX);
   //  irrecv.resume(); // Receive the next value
   //}
-  if (ohhyeah.serialAvailable()){
-    char h = ohhyeah.getByte();
-    Serial.println(h);
+  //if (ohhyeah.serialAvailable()){
+  //  char h = ohhyeah.getByte();
+  //  Serial.println(h);
+  //}
+  char mau;
+  //cli();
+  while(ohhyeah.serialAvailable()){
+    mau = ohhyeah.getByte();
+    Serial.print(mau);
   }
-  delay(1000);
-  char a[] = {0xAA};
+  delay(5000);
+  Serial.println();
+  //char a[] = {0xAA};
   //irsend.sendLazIR(a,sizeof(a),38);
 }
 
