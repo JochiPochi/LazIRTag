@@ -12,7 +12,7 @@ int RECV_PIN = 11;
 
 //IRrecv irrecv(RECV_PIN);
 
-//IRsend irsend;
+IRsend irsend;
 IRrecv ohhyeah;
 //decode_results results;
 
@@ -25,15 +25,18 @@ void setup()
 
 void loop() {
   char mau;
-  //cli();
+  
+  
   while(ohhyeah.serialAvailable()){
     mau = ohhyeah.getByte();
     Serial.print(mau);
   }
+
+
   //Serial.println();
-  //char a[] = {'a','b','h','&','O','#'};
-  //irsend.sendLazIR(a,sizeof(a),38);
-  //delay(5000);
+  char a[] = {'a','b','c'};
+  irsend.sendLazIR(a,sizeof(a),38);
+  delay(500);
   
   
 }

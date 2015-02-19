@@ -110,7 +110,7 @@ ISR(INT0_vect)
   dTime = cTime-irSerial.prevTime;
   if (currentState){
   }
-  if (currentState < irSerial.lastState && !irSerial.byteBuff.IsFull()){
+  if (currentState > irSerial.lastState && !irSerial.byteBuff.IsFull()){
     //Serial.println(int(dTime));
     if (dTime > LazIR_HDR_MARK-TOLERANCE || irSerial.bytePos > 8){
       irSerial.bytePos = 0;

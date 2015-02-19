@@ -50,18 +50,18 @@
 
 
 //Pulse parameters for LazIR
-#define LazIR_HDR_MARK	1000
-#define LazIR_HDR_SPACE	400
-#define LazIR_ONE_MARK	800
-#define LazIR_ZERO_MARK	600
-#define LazIR_RPT_LENGTH 400
+#define LazIR_HDR_MARK	1600
+#define LazIR_HDR_SPACE	800
+#define LazIR_ONE_MARK	1200
+#define LazIR_ZERO_MARK	800
+#define LazIR_RPT_LENGTH 800
 #define LazIR_DOUBLE_SPACE_USECS  500
 #define MESSAGE_LENGTH 2
 #define BITS_PER_MESS (MESSAGE_LENGTH*8+1)
 
 
 
-#define TOLERANCE 20  // microseconds
+#define TOLERANCE 150  // microseconds
 #define LTOL (1.0 - TOLERANCE/100.) 
 #define UTOL (1.0 + TOLERANCE/100.) 
 
