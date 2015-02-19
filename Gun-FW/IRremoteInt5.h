@@ -47,10 +47,12 @@
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 #endif
 
+
+
 //Pulse parameters for LazIR
-#define LazIR_HDR_MARK	1600
+#define LazIR_HDR_MARK	1000
 #define LazIR_HDR_SPACE	400
-#define LazIR_ONE_MARK	1000
+#define LazIR_ONE_MARK	800
 #define LazIR_ZERO_MARK	600
 #define LazIR_RPT_LENGTH 400
 #define LazIR_DOUBLE_SPACE_USECS  500
@@ -91,6 +93,8 @@ typedef struct {
   volatile uint32_t prevTime;
   CircularBuffer <boolean,uint16_t,100> bitBuff;
   CircularBuffer <uint8_t,uint16_t,50> byteBuff;
+  uint8_t byteFactory[8];
+  uint8_t bytePos;
   volatile boolean lastState;
 } 
 irSerial_t;
