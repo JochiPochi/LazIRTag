@@ -12,6 +12,8 @@ int pSS5 = 0;
 int sS6 = 0; 
 int pSS6 = 0;
 
+uint8_t debounce = 500;
+
 // Define Button Pins
 #define switchOut1 13
 #define switchIn1 12
@@ -115,36 +117,45 @@ void loop(){
       damMult = 0x02;
     }
 
-//    for (int i = 1; i == 20; i++){
-      if (msgType == 0x0A){
-        checksum = (0xFF - (syncByte+msgType+senderID+destID+remHealth+damMult));
-        Serial.write(syncByte); Serial.print(syncByte, HEX);
-        Serial.write(msgType); Serial.print(msgType, HEX);
-        Serial.write(senderID); Serial.print(senderID, HEX);
-        Serial.write(destID);
-        Serial.write(remHealth);
-        Serial.write(damMult);
-        Serial.write(blank);
-        Serial.write(blank);
-        Serial.write(checksum);
-//        delay(1);
-//      }
+    //    for (int i = 1; i == 20; i++){
+    if (msgType == 0x0A){
+      checksum = (0xFF - (syncByte+msgType+senderID+destID+remHealth+damMult));
+//      Serial.write(syncByte); 
+//      Serial.write(msgType); 
+//      Serial.write(senderID); 
+//      Serial.write(destID);
+//      Serial.write(remHealth);
+//      Serial.write(damMult);
+//      Serial.write(blank);
+//      Serial.write(blank);
+//      Serial.write(checksum);
+      Serial.println(syncByte, HEX);
+      Serial.println(msgType, HEX);
+      Serial.println(senderID, HEX);
+      Serial.println(destID, HEX);
+      Serial.println(remHealth, HEX);
+      Serial.println(damMult, HEX);
+      Serial.println(blank, HEX);
+      Serial.println(blank, HEX);
+      Serial.println(checksum, HEX);
+      //        delay(1);
+      //      }
     }
-//    for (int i = 1; i == 20; i++){
-      if (msgType == 0x0B){
-        checksum = (0xFF - (syncByte+msgType+senderID+destID+weapID+playerID+battCond));
-        Serial.write(syncByte); // Send packet with customized info based on button
-        Serial.write(msgType);
-        Serial.write(senderID);
-        Serial.write(destID);
-        Serial.write(weapID);
-        Serial.write(playerID);
-        Serial.write(battCond);
-        Serial.write(blank);
-        Serial.write(blank);
-        Serial.write(checksum);
-//        delay(1);
-//      }
+    //    for (int i = 1; i == 20; i++){
+    if (msgType == 0x0B){
+      checksum = (0xFF - (syncByte+msgType+senderID+destID+weapID+playerID+battCond));
+      Serial.write(syncByte); // Send packet with customized info based on button
+      Serial.write(msgType);
+      Serial.write(senderID);
+      Serial.write(destID);
+      Serial.write(weapID);
+      Serial.write(playerID);
+      Serial.write(battCond);
+      Serial.write(blank);
+      Serial.write(blank);
+      Serial.write(checksum);
+      //        delay(1);
+      //      }
     }
   }
   // Update Switch State Variables
@@ -155,6 +166,8 @@ void loop(){
   pSS5 = sS5; 
   pSS6 = sS6;
 }
+
+
 
 
 
