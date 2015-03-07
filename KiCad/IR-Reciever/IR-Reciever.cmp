@@ -1,0 +1,45 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 3/6/2015 3:54:01 AM
+
+BeginCmp
+TimeStamp = /54F9605B;
+Reference = C1;
+ValeurCmp = 200 uF;
+IdModule  = C2;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F95E7E;
+Reference = P1;
+ValeurCmp = CONN_6;
+IdModule  = PIN_ARRAY-6X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F95920;
+Reference = U1;
+ValeurCmp = TSOP38238;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F9592F;
+Reference = U2;
+ValeurCmp = TSOP38238;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F9593E;
+Reference = U3;
+ValeurCmp = TSOP38238;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /54F95F97;
+Reference = U4;
+ValeurCmp = RGBLED;
+IdModule  = RGB-Led;
+EndCmp
+
+EndListe
