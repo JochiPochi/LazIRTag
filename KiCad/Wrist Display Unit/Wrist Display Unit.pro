@@ -1,4 +1,4 @@
-update=3/11/2015 10:50:51 PM
+update=3/12/2015 1:02:34 AM
 version=1
 last_client=eeschema
 [cvpcb]
@@ -47,7 +47,7 @@ LibName16=valves
 version=1
 [eeschema]
 version=1
-LibDir=C:/Users/dan52_000/Documents/Arduino/LazIRTag/KiCad/Library
+LibDir=../Library
 NetFmtName=
 RptD_X=0
 RptD_Y=100
