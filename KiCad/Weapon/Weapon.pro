@@ -1,4 +1,4 @@
-update=3/11/2015 10:48:48 PM
+update=3/11/2015 10:57:02 PM
 version=1
 last_client=eeschema
 [cvpcb]
@@ -6,8 +6,6 @@ version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[general]
-version=1
 [pcbnew]
 version=1
 LastNetListRead=
@@ -45,7 +43,8 @@ LibName13=led
 LibName14=dip_sockets
 LibName15=pga_sockets
 LibName16=valves
-LibName17=LazIRLayoutLib
+[general]
+version=1
 [eeschema]
 version=1
 LibDir=../Library
