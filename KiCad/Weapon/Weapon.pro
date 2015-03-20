@@ -1,11 +1,6 @@
-update=3/11/2015 10:57:02 PM
+update=3/20/2015 12:28:27 AM
 version=1
-last_client=eeschema
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
+last_client=cvpcb
 [pcbnew]
 version=1
 LastNetListRead=
@@ -26,7 +21,6 @@ DrawSegmentWidth=0.200000000000
 BoardOutlineThickness=0.100000000000
 ModuleOutlineThickness=0.150000000000
 [pcbnew/libraries]
-LibDir=
 LibName1=sockets
 LibName2=connect
 LibName3=discret
@@ -43,6 +37,8 @@ LibName13=led
 LibName14=dip_sockets
 LibName15=pga_sockets
 LibName16=valves
+LibName17=C:/Users/dan52_000/Documents/Arduino/LazIRTag/KiCad/Library/LazIRLayoutLib
+LibDir=
 [general]
 version=1
 [eeschema]
@@ -85,3 +81,8 @@ LibName28=atmel
 LibName29=contrib
 LibName30=valves
 LibName31=LazIRTag
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms

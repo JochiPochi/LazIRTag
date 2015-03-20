@@ -1,4 +1,4 @@
-update=3/11/2015 10:47:22 PM
+update=3/20/2015 2:19:46 AM
 version=1
 last_client=kicad
 [cvpcb]
@@ -47,7 +47,7 @@ LibName29=contrib
 LibName30=valves
 [pcbnew]
 version=1
-LastNetListRead=
+LastNetListRead=Weapon/Weapon.net
 UseCmpFile=1
 PadDrill=0.600000000000
 PadDrillOvalY=0.600000000000
@@ -82,5 +82,6 @@ LibName13=led
 LibName14=dip_sockets
 LibName15=pga_sockets
 LibName16=valves
+LibName17=Library/LazIRLayoutLib
 [general]
 version=1
