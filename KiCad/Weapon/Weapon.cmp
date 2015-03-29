@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 3/20/2015 2:14:06 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 3/23/2015 1:02:01 AM
 
 BeginCmp
 TimeStamp = /55012331;
@@ -85,6 +85,13 @@ IdModule  = MicroUSB;
 EndCmp
 
 BeginCmp
+TimeStamp = /550F9CED;
+Reference = LS1;
+ValeurCmp = BUZZER;
+IdModule  = AI-1223Buzzer;
+EndCmp
+
+BeginCmp
 TimeStamp = /55012354;
 Reference = P1;
 ValeurCmp = 2P_CGRID_M;
@@ -106,8 +113,15 @@ IdModule  = 2PinMaleCGrid90Deg;
 EndCmp
 
 BeginCmp
-TimeStamp = /5501232E;
+TimeStamp = /550F9896;
 Reference = Q1;
+ValeurCmp = NPN;
+IdModule  = TO92;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501232E;
+Reference = Q2;
 ValeurCmp = NPN;
 IdModule  = TO92;
 EndCmp
@@ -127,52 +141,73 @@ IdModule  = R4;
 EndCmp
 
 BeginCmp
-TimeStamp = /55012D9E;
+TimeStamp = /550F989C;
 Reference = R3;
-ValeurCmp = 10k;
+ValeurCmp = 560;
 IdModule  = R4;
 EndCmp
 
 BeginCmp
-TimeStamp = /55012DAD;
+TimeStamp = /55012D9E;
 Reference = R4;
 ValeurCmp = 10k;
 IdModule  = R4;
 EndCmp
 
 BeginCmp
-TimeStamp = /550129C5;
+TimeStamp = /55012DAD;
 Reference = R5;
+ValeurCmp = 10k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /550129C5;
+Reference = R6;
 ValeurCmp = 1k;
 IdModule  = R4;
 EndCmp
 
 BeginCmp
+TimeStamp = /550F98A8;
+Reference = R7;
+ValeurCmp = 330;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
 TimeStamp = /55012341;
-Reference = R6;
+Reference = R8;
 ValeurCmp = 560;
 IdModule  = R4;
 EndCmp
 
 BeginCmp
 TimeStamp = /55012B59;
-Reference = R7;
+Reference = R9;
 ValeurCmp = 10k;
 IdModule  = R4;
 EndCmp
 
 BeginCmp
 TimeStamp = /55012339;
-Reference = R8;
+Reference = R10;
 ValeurCmp = 10k;
 IdModule  = R4;
 EndCmp
 
 BeginCmp
 TimeStamp = /55012342;
-Reference = R9;
+Reference = R11;
 ValeurCmp = 330;
 IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F6271;
+Reference = S1;
+ValeurCmp = SLIDESWITCH;
+IdModule  = PIN_ARRAY_3X1;
 EndCmp
 
 BeginCmp
@@ -193,7 +228,7 @@ BeginCmp
 TimeStamp = /5501260F;
 Reference = U3;
 ValeurCmp = LM1084IT-3.3/NOPB;
-IdModule  = TO-220;
+IdModule  = TO220;
 EndCmp
 
 BeginCmp

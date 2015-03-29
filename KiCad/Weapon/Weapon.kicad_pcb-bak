@@ -1432,7 +1432,7 @@
   (gr_text "LaZIR Tag\nMarch 2015" (at 128.27 81.026) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify right))
   )
-  (gr_text "400 mAh LiPo" (at 50.038 47.752) (layer F.SilkS)
+  (gr_text "Place LiPo Here\n(Kapton First, Silly)" (at 50.038 47.752) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
   (gr_line (start 70.358 35.052) (end 32.258 35.052) (angle 90) (layer F.SilkS) (width 0.2))
