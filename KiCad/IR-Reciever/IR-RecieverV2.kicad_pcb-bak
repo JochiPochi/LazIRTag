@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 24.7904 20.7518 48.3362 41.7322)
     (thickness 1.6)
-    (drawings 6)
+    (drawings 5)
     (tracks 21)
     (zones 0)
     (modules 6)
@@ -14,8 +14,8 @@
 
   (page A3)
   (layers
-    (15 F.Cu signal)
-    (0 B.Cu signal)
+    (15 F.Cu signal hide)
+    (0 B.Cu signal hide)
     (16 B.Adhes user hide)
     (17 F.Adhes user hide)
     (18 B.Paste user hide)
@@ -327,9 +327,6 @@
     )
   )
 
-  (gr_text "Apparel Sensor Array" (at 45.974 22.86) (layer F.SilkS)
-    (effects (font (size 0.5 0.5) (thickness 0.125)) (justify right))
-  )
   (gr_text "LaZIR Tag\nMarch 2015" (at 45.974 38.608) (layer F.SilkS)
     (effects (font (size 0.5 0.5) (thickness 0.125)) (justify right))
   )
