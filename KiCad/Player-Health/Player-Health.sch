@@ -452,7 +452,7 @@ Text GLabel 3250 5450 2    59   Output ~ 0
 MOSI
 Text GLabel 3500 5550 2    59   Input ~ 0
 MISO
-Text GLabel 3250 6850 2    59   Output ~ 0
+Text GLabel 3950 7100 2    59   Output ~ 0
 UART TX
 Text GLabel 7800 6700 2    59   Output ~ 0
 UART RX
@@ -506,8 +506,6 @@ F 3 "" H 7650 6100 60  0000 C CNN
 	1    7650 6100
 	0    1    1    0   
 $EndComp
-Text GLabel 7800 6200 2    59   Input ~ 0
-WiFi Program
 Text Notes 5700 5300 0    118  ~ 0
 Wireless Device
 $Comp
@@ -529,7 +527,7 @@ Text GLabel 9800 4100 2    60   Input ~ 0
 USBV
 Text GLabel 3200 6000 2    60   Input ~ 0
 VSense
-Text GLabel 3650 6750 2    59   Input ~ 0
+Text GLabel 3950 6650 2    59   Input ~ 0
 UART RX
 $Comp
 L CONN_6 P2
@@ -849,7 +847,7 @@ Wire Wire Line
 Wire Wire Line
 	3250 5650 3200 5650
 Wire Wire Line
-	3250 6850 3200 6850
+	3200 6850 3650 6850
 Wire Wire Line
 	3200 5750 4800 5750
 Wire Wire Line
@@ -940,4 +938,49 @@ F 3 "" H 7850 2000 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	10250 4000 9800 4000
+$Comp
+L GND #PWR024
+U 1 1 5530A16F
+P 8300 6200
+F 0 "#PWR024" H 8300 6200 30  0001 C CNN
+F 1 "GND" H 8300 6130 30  0001 C CNN
+F 2 "" H 8300 6200 60  0000 C CNN
+F 3 "" H 8300 6200 60  0000 C CNN
+	1    8300 6200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L JUMPER JP2
+U 1 1 5530A41F
+P 8050 6200
+F 0 "JP2" H 8050 6100 60  0000 C CNN
+F 1 "JUMPER" H 8050 6300 60  0000 C CNN
+F 2 "" H 8050 6200 60  0000 C CNN
+F 3 "" H 8050 6200 60  0000 C CNN
+	1    8050 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8250 6200 8300 6200
+$Comp
+L JUMPER JP1
+U 1 1 5530A4A4
+P 3850 6850
+F 0 "JP1" H 3850 6750 60  0000 C CNN
+F 1 "JUMPER" H 3850 6950 60  0000 C CNN
+F 2 "" H 3850 6850 60  0000 C CNN
+F 3 "" H 3850 6850 60  0000 C CNN
+	1    3850 6850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3650 7100 3950 7100
+Wire Wire Line
+	3650 6650 3950 6650
+Wire Wire Line
+	3650 6650 3650 6750
+Connection ~ 3850 6650
+Wire Wire Line
+	3650 6850 3650 7100
+Connection ~ 3850 7100
 $EndSCHEMATC
