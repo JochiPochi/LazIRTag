@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  4/17/2015 2:19:06 AM
+PCBNEW-LibModule-V1  4/17/2015 2:50:48 AM
 # encoding utf-8
 Units mm
 $INDEX
@@ -6,6 +6,7 @@ $INDEX
 2PinMaleCGrid90Deg
 AI-1223Buzzer
 JP
+JumperPads
 MicroUSB
 RFID-RC522
 RGB-Led
@@ -205,6 +206,29 @@ Po 0.8 0
 .LocalClearance 0.1
 $EndPAD
 $EndMODULE JP
+$MODULE JumperPads
+Po 0 0 0 15 5530AD38 00000000 ~~
+Li JumperPads
+Sc 0
+AR 
+Op 0 0 0
+T0 0 -1.89 1 1 0 0.15 N V 21 N "JP"
+T1 0 1.99 1 1 0 0.15 N V 21 N "VAL**"
+$PAD
+Sh "1" R 1.4 2 0 0 0
+Dr 0 0 0
+At SMD N 00888000
+Ne 0 ""
+Po -0.95 0
+$EndPAD
+$PAD
+Sh "2" R 1.4 2 0 0 0
+Dr 0 0 0
+At SMD N 00888000
+Ne 0 ""
+Po 0.96 0
+$EndPAD
+$EndMODULE JumperPads
 $MODULE MicroUSB
 Po 0 0 0 15 550BB004 00000000 ~~
 Li MicroUSB
