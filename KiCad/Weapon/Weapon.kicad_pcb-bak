@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 32.002999 20.079499 129.590001 88.632501)
     (thickness 1.6)
-    (drawings 25)
+    (drawings 26)
     (tracks 175)
     (zones 0)
     (modules 33)
@@ -1379,6 +1379,9 @@
     )
   )
 
+  (gr_text "Daniel Lefebvre & John Aleman" (at 56.6928 88.773) (layer F.SilkS)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
   (gr_circle (center 126.5301 88.5698) (end 124.8283 88.5698) (layer Edge.Cuts) (width 0.1))
   (gr_circle (center 35.2679 88.5698) (end 36.9697 88.5698) (layer Edge.Cuts) (width 0.1))
   (gr_circle (center 126.5301 20.1422) (end 124.8283 20.1422) (layer Edge.Cuts) (width 0.1))
