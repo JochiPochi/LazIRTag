@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 4/17/2015 2:44:05 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 4/17/2015 3:02:25 AM
 
 BeginCmp
 TimeStamp = /5528173B;
@@ -92,17 +92,17 @@ IdModule  = MicroUSB;
 EndCmp
 
 BeginCmp
-TimeStamp = /5530A4A4;
+TimeStamp = /5530B17C;
 Reference = JP1;
 ValeurCmp = JUMPER;
-IdModule  = JP;
+IdModule  = JumperPads;
 EndCmp
 
 BeginCmp
 TimeStamp = /5530A41F;
 Reference = JP2;
 ValeurCmp = JUMPER;
-IdModule  = JP;
+IdModule  = JumperPads;
 EndCmp
 
 BeginCmp
