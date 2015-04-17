@@ -37,7 +37,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "23 mar 2015"
+Date "17 apr 2015"
 Rev ""
 Comp ""
 Comment1 ""
@@ -868,17 +868,6 @@ F 3 "~" H 6400 1150 30  0000 C CNN
 $EndComp
 Text GLabel 7400 1050 2    60   Input ~ 0
 V-Bat
-$Comp
-L R R7
-U 1 1 550F98A8
-P 7150 1450
-F 0 "R7" V 7230 1450 40  0000 C CNN
-F 1 "330" V 7157 1451 40  0000 C CNN
-F 2 "~" V 7080 1450 30  0000 C CNN
-F 3 "~" H 7150 1450 30  0000 C CNN
-	1    7150 1450
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	6400 900  6400 850 
 Connection ~ 6400 850 
@@ -921,4 +910,6 @@ Wire Wire Line
 	4050 6300 4050 6100
 Wire Wire Line
 	4050 6100 4000 6100
+Wire Wire Line
+	7400 1450 6900 1450
 $EndSCHEMATC
