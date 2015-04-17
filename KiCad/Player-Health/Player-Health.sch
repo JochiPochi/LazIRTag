@@ -37,7 +37,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "10 apr 2015"
+Date "17 apr 2015"
 Rev ""
 Comp ""
 Comment1 ""
@@ -454,7 +454,7 @@ Text GLabel 3500 5550 2    59   Input ~ 0
 MISO
 Text GLabel 3250 6850 2    59   Output ~ 0
 UART TX
-Text GLabel 7800 6000 2    59   Output ~ 0
+Text GLabel 7800 6700 2    59   Output ~ 0
 UART RX
 Text Notes 2000 4800 2    118  ~ 0
 MicroController
@@ -471,7 +471,7 @@ F 3 "~" H 6900 6350 60  0000 C CNN
 	1    6900 6350
 	1    0    0    -1  
 $EndComp
-Text GLabel 7800 6700 2    59   Input ~ 0
+Text GLabel 7800 6000 2    59   Input ~ 0
 UART TX
 $Comp
 L GND #PWR16
@@ -712,17 +712,6 @@ F 3 "~" H 6850 1200 30  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R7
-U 1 1 552837A1
-P 7400 2000
-F 0 "R7" V 7480 2000 40  0000 C CNN
-F 1 "330" V 7407 2001 40  0000 C CNN
-F 2 "~" V 7330 2000 30  0000 C CNN
-F 3 "~" H 7400 2000 30  0000 C CNN
-	1    7400 2000
-	0    -1   -1   0   
-$EndComp
-$Comp
 L LED D4
 U 1 1 552837A7
 P 7450 1200
@@ -935,7 +924,7 @@ Wire Wire Line
 Wire Wire Line
 	6500 1200 6500 1250
 Wire Wire Line
-	7150 2000 7000 2000
+	7000 2000 7650 2000
 Text Notes 6900 750  2    118  ~ 0
 Rumble Motor
 $Comp
@@ -949,4 +938,6 @@ F 3 "" H 7850 2000 60  0000 C CNN
 	1    7850 2000
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	10250 4000 9800 4000
 $EndSCHEMATC
