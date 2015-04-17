@@ -1,6 +1,6 @@
-update=3/20/2015 2:19:46 AM
+update=4/17/2015 12:17:57 AM
 version=1
-last_client=kicad
+last_client=pcbnew
 [cvpcb]
 version=1
 NetIExt=net
@@ -45,9 +45,11 @@ LibName27=opto
 LibName28=atmel
 LibName29=contrib
 LibName30=valves
+[general]
+version=1
 [pcbnew]
 version=1
-LastNetListRead=Weapon/Weapon.net
+LastNetListRead=Player-Health/Player-Health.net
 UseCmpFile=1
 PadDrill=0.600000000000
 PadDrillOvalY=0.600000000000
@@ -83,5 +85,3 @@ LibName14=dip_sockets
 LibName15=pga_sockets
 LibName16=valves
 LibName17=Library/LazIRLayoutLib
-[general]
-version=1
