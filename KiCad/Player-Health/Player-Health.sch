@@ -317,7 +317,7 @@ F 3 "~" H 3700 3700 60  0000 C CNN
 $EndComp
 Text GLabel 2000 3300 0    60   Input ~ 0
 VBatt
-Text GLabel 2600 4000 0    60   Output ~ 0
+Text GLabel 2750 4050 3    60   Output ~ 0
 VSense
 $Comp
 L +3.3V #PWR11
@@ -366,17 +366,6 @@ Text GLabel 7650 4150 2    59   Input ~ 0
 I2C CLK
 Text Notes 7650 2800 2    118  ~ 0
 AlphaNumeric Display
-$Comp
-L LED D1
-U 1 1 5528124B
-P 2300 3300
-F 0 "D1" H 2300 3400 50  0000 C CNN
-F 1 "LED" H 2300 3200 50  0000 C CNN
-F 2 "~" H 2300 3300 60  0000 C CNN
-F 3 "~" H 2300 3300 60  0000 C CNN
-	1    2300 3300
-	1    0    0    -1  
-$EndComp
 $Comp
 L LED D3
 U 1 1 552812BB
@@ -808,18 +797,16 @@ Wire Notes Line
 Wire Notes Line
 	5600 500  5600 7800
 Wire Wire Line
-	2500 3300 2900 3300
+	2000 3300 2900 3300
 Wire Wire Line
 	2750 3400 2750 3300
 Connection ~ 2750 3300
 Wire Wire Line
-	2750 3900 2750 4000
+	2750 3900 2750 4050
 Connection ~ 2750 4000
 Wire Wire Line
 	3300 3600 3300 4150
 Connection ~ 3300 4000
-Wire Wire Line
-	2800 4000 2600 4000
 Wire Wire Line
 	3700 3500 3700 3300
 Wire Wire Line
@@ -841,8 +828,6 @@ Wire Wire Line
 	7650 4150 7400 4150
 Wire Wire Line
 	7400 4000 7650 4000
-Wire Wire Line
-	2000 3300 2100 3300
 Wire Notes Line
 	500  4550 5600 4550
 Wire Wire Line
