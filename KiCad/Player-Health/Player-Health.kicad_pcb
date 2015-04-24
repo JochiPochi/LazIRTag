@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 39.104712 86.614799 138.459601 152.1206)
     (thickness 1.6)
-    (drawings 23)
+    (drawings 24)
     (tracks 186)
     (zones 0)
     (modules 34)
@@ -1600,6 +1600,9 @@
     )
   )
 
+  (gr_text "400 mAh LiPo" (at 59.1058 131.4958) (layer F.SilkS)
+    (effects (font (size 2 2) (thickness 0.3)))
+  )
   (gr_line (start 138.4046 86.6648) (end 43.3832 86.6648) (angle 90) (layer Edge.Cuts) (width 0.1))
   (gr_line (start 40.3606 151.6126) (end 138.4046 151.6126) (angle 90) (layer Edge.Cuts) (width 0.1))
   (gr_line (start 138.4046 86.6648) (end 138.4046 151.6126) (angle 90) (layer Edge.Cuts) (width 0.1))
