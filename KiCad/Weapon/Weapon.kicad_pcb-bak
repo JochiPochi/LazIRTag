@@ -14,7 +14,7 @@
 
   (page A3)
   (layers
-    (15 F.Cu signal hide)
+    (15 F.Cu signal)
     (0 B.Cu signal)
     (16 B.Adhes user hide)
     (17 F.Adhes user hide)
@@ -1327,12 +1327,12 @@
     )
   )
 
-  (module PIN_ARRAY_3X1 (layer F.Cu) (tedit 554049A5) (tstamp 550F9E8A)
+  (module PIN_ARRAY_3X1 (layer F.Cu) (tedit 55404A16) (tstamp 550F9E8A)
     (at 38.608 33.147)
     (descr "Connecteur 3 pins")
     (tags "CONN DEV")
     (path /550F6271)
-    (fp_text reference S1 (at 0.0762 2.2098) (layer F.SilkS)
+    (fp_text reference S1 (at 7.99592 0.33528) (layer F.SilkS)
       (effects (font (size 1.016 1.016) (thickness 0.1524)))
     )
     (fp_text value SLIDESWITCH (at 0 -2.159) (layer F.SilkS) hide
