@@ -3,7 +3,7 @@
   (general
     (links 15)
     (no_connects 0)
-    (area 24.7904 18.428499 48.3362 43.801501)
+    (area 24.7904 17.158499 48.3362 45.071501)
     (thickness 1.6)
     (drawings 22)
     (tracks 21)
@@ -348,7 +348,7 @@
   (gr_text "Apparel Sensor\nArray PCB v1" (at 36.4998 18.6944) (layer F.SilkS)
     (effects (font (size 0.75 0.75) (thickness 0.125)))
   )
-  (gr_text "LaZIR Tag\nApril 2015" (at 36.195 42.6212) (layer F.SilkS)
+  (gr_text "LaZIR Tag\nApril 2015\nDaniel Lefebvre\n& John Aleman" (at 36.3728 40.8178) (layer F.SilkS)
     (effects (font (size 0.75 0.75) (thickness 0.125)))
   )
   (gr_line (start 26.67 40.005) (end 26.67 22.225) (angle 90) (layer Edge.Cuts) (width 0.1))

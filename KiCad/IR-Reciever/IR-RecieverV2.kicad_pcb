@@ -296,12 +296,12 @@
     )
   )
 
-  (module C2 (layer F.Cu) (tedit 54FCEAE4) (tstamp 54F96B8A)
+  (module C2 (layer F.Cu) (tedit 5540419F) (tstamp 54F96B8A)
     (at 33.655 31.115 90)
     (descr "Condensateur = 2 pas")
     (tags C)
     (path /54F9605B)
-    (fp_text reference C1 (at 0 0 180) (layer F.SilkS)
+    (fp_text reference C1 (at 0.3048 -1.9304 180) (layer F.SilkS)
       (effects (font (size 1.016 1.016) (thickness 0.2032)))
     )
     (fp_text value "200 uF" (at 0.127 -1.905 90) (layer F.SilkS) hide
