@@ -1786,7 +1786,7 @@
   (gr_text "LaZIR Tag\nApril 2015" (at 56.9976 88.9) (layer B.SilkS)
     (effects (font (size 2 2) (thickness 0.3)) (justify mirror))
   )
-  (gr_text "Player/H.S.\nPCB v1" (at 126.5682 145.288) (layer F.SilkS)
+  (gr_text "Player/H.S.\nPCB v1" (at 123.317 145.6436) (layer F.SilkS)
     (effects (font (size 2 2) (thickness 0.3)))
   )
   (gr_text "LaZIR Tag\nApril 2015" (at 56.9976 88.8492) (layer F.SilkS)
