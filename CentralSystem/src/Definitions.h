@@ -11,6 +11,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <fcntl.h>
+#include "LazIRDatabase.h"
 
 #define BASESTATION_MIN_ID 0x00
 #define BASESTATION_MAX_ID 0x0F

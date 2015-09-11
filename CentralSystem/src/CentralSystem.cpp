@@ -7,48 +7,47 @@
 //============================================================================
 
 #include "Definitions.h"
-#include "Functions.h"
-#include "LazIRDatabase.h"
+//#include "Functions.h"
 using namespace std;
 
 int main(int argc, char *argv[]) {
 	//Here we configure the network settings
-	int sockfd;
-	struct addrinfo servHints, *servinfo, *p;
-	int rv;
-	int numbytes;
-	struct sockaddr_storage device_addr;
-	char buf[MAXBUFLEN];
-	socklen_t addr_len;
-	char s[INET6_ADDRSTRLEN];
-	memset(&servHints, 0, sizeof servHints);
-	servHints.ai_family = AF_UNSPEC; // set to AF_INET to force IPv4
-	servHints.ai_socktype = SOCK_DGRAM;
-	servHints.ai_flags = AI_PASSIVE; // use my IP
-	if ((rv = getaddrinfo(NULL, MYPORT, &servHints, &servinfo)) != 0) {
-		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-		return 1;
-	}
-	// loop through all the results and bind to the first we can
-	for (p = servinfo; p != NULL; p = p->ai_next) {
-		if ((sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol))
-				== -1) {
-			perror("listener: socket");
-			continue;
-		}
-		fcntl(sockfd, F_SETFL, O_NONBLOCK);
-		if (bind(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
-			close(sockfd);
-			perror("listener: bind");
-			continue;
-		}
-		break;
-	}
-	if (p == NULL) {
-		fprintf(stderr, "listener: failed to bind socket\n");
-		return 2;
-	}
-	freeaddrinfo(servinfo);
+//	int sockfd;
+//	struct addrinfo servHints, *servinfo, *p;
+//	int rv;
+//	int numbytes;
+//	struct sockaddr_storage device_addr;
+//	char buf[MAXBUFLEN];
+//	socklen_t addr_len;
+//	char s[INET6_ADDRSTRLEN];
+//	memset(&servHints, 0, sizeof servHints);
+//	servHints.ai_family = AF_UNSPEC; // set to AF_INET to force IPv4
+//	servHints.ai_socktype = SOCK_DGRAM;
+//	servHints.ai_flags = AI_PASSIVE; // use my IP
+//	if ((rv = getaddrinfo(NULL, MYPORT, &servHints, &servinfo)) != 0) {
+//		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
+//		return 1;
+//	}
+//	// loop through all the results and bind to the first we can
+//	for (p = servinfo; p != NULL; p = p->ai_next) {
+//		if ((sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol))
+//				== -1) {
+//			perror("listener: socket");
+//			continue;
+//		}
+//		fcntl(sockfd, F_SETFL, O_NONBLOCK);
+//		if (bind(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
+//			close(sockfd);
+//			perror("listener: bind");
+//			continue;
+//		}
+//		break;
+//	}
+//	if (p == NULL) {
+//		fprintf(stderr, "listener: failed to bind socket\n");
+//		return 2;
+//	}
+//	freeaddrinfo(servinfo);
 
 
 
@@ -66,6 +65,7 @@ int main(int argc, char *argv[]) {
 		break;
 	default:
 		cout << "Error: An unknown value for gameMode was encountered" << endl;
+		break;
 	}
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	int a, b, c, d, e, f, g;
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
 	//int foo = SUPERTEST;
 
 
-	close(sockfd);
+	//close(sockfd);
 	return 0;
 }
 
