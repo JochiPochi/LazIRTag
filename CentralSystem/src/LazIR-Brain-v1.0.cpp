@@ -1,39 +1,99 @@
 //============================================================================
-// Name        : 0.cpp
+// Name        : LazIR-Brain.cpp
 // Author      : John R. Aleman
-// Version     :
+// Version     : 1.0
 // Copyright   : Mwhaha
-// Description : Hello World in C++, Ansi-style
+// Description : This is the main loop of the LazIR server
 //============================================================================
 
-#include <iostream>
-#include <list>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
 #include "Definitions.h"
 #include "Functions.h"
 #include "LazIRDatabase.h"
 using namespace std;
 
+int main(int argc, char *argv[]) {
+	//Here we configure the network settings
+	int sockfd;
+	struct addrinfo servHints, *servinfo, *p;
+	int rv;
+	int numbytes;
+	struct sockaddr_storage device_addr;
+	char buf[MAXBUFLEN];
+	socklen_t addr_len;
+	char s[INET6_ADDRSTRLEN];
+	memset(&servHints, 0, sizeof servHints);
+	servHints.ai_family = AF_UNSPEC; // set to AF_INET to force IPv4
+	servHints.ai_socktype = SOCK_DGRAM;
+	servHints.ai_flags = AI_PASSIVE; // use my IP
+	if ((rv = getaddrinfo(NULL, MYPORT, &servHints, &servinfo)) != 0) {
+		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
+		return 1;
+	}
+	// loop through all the results and bind to the first we can
+	for (p = servinfo; p != NULL; p = p->ai_next) {
+		if ((sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol))
+				== -1) {
+			perror("listener: socket");
+			continue;
+		}
+		fcntl(sockfd, F_SETFL, O_NONBLOCK);
+		if (bind(sockfd, p->ai_addr, p->ai_addrlen) == -1) {
+			close(sockfd);
+			perror("listener: bind");
+			continue;
+		}
+		break;
+	}
+	if (p == NULL) {
+		fprintf(stderr, "listener: failed to bind socket\n");
+		return 2;
+	}
+	freeaddrinfo(servinfo);
 
-int main() {
-	LazIR_Database BaseStations(BASESTATION_MIN_ID, BASESTATION_MAX_ID);
-	LazIR_Database Players(PLAYER_MIN_ID, PLAYER_MIN_ID);
-	LazIR_Database Others(OTHER_MIN_ID, OTHER_MIN_ID);
+
+
+
+	int gameMode = 1;
+	switch (gameMode) {
+	case 0: //Preliminary Mode
+		//Do Stuff Here
+		break;
+	case 1: //Game main loop
+		//Do Stuff Here
+		break;
+	case 2: //What happens at the end of the game
+		//Do Stuff Here
+		break;
+	default:
+		cout << "Error: An unknown value for gameMode was encountered" << endl;
+	}
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	int a, b, c, d, e, f, g;
+	Players.addDevice(21);
+	Players.addDevice(22);
+	Players.addDevice(23);
+	Players.addDevice(24);
+	bool mau = Players.deviceExists(21);
+	Players.writeValue(23, batteryLevel, 40);
+	b = Players.numberOfDevices();
+	cout << "number of devices: " << b << endl;
+	vector<int> something;
+	c = Players.devicesWithLowBattery(something);
+	cout << "cc: " << c << endl;
+	for (int i = 0; i < something.size(); i++) {
+		cout << "elements are << " << something.at(i) << " " << endl;
+	}
+	a = Players.deviceExists(21);
+	b = Players.numberOfDevices();
+	cout << "cc: " << c << endl;
+	cout << "bb: " << b << endl;
+	Players.printDeviceInfo(10);
 	//int foo = SUPERTEST;
+
+
+	close(sockfd);
 	return 0;
 }
-
-
 
 /*
  *
