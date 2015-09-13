@@ -6,9 +6,10 @@
 class Weapon : public Device {
 
 public:
-    Weapon(int id_value, int ipAddress_value, int damage_value);
+    Weapon(int id, sockaddr_in address);
     ~Weapon();
 
+private:
     int damage;
     int ammo;
 };

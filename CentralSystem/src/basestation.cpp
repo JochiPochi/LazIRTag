@@ -2,10 +2,10 @@
 
 using namespace std;
 
-BaseStation::BaseStation(int id_value, int ipAddress_value) :
-        Device(id_value, ipAddress_value)
+BaseStation::BaseStation(int id, sockaddr_in address) :
+        Device(id, address)
 {
-    hp = 0;
+    this->hp = 0;
 }
 
 BaseStation::~BaseStation()

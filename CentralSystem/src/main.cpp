@@ -6,15 +6,29 @@
 // Description : This is the main loop of the LazIR server
 //============================================================================
 
-#include <database.h>
-
+#include <player.h>
+#include <weapon.h>
+#include <basestation.h>
 #include <iostream>
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
 
-    // Do nothing.
+    Players players;
+    sockaddr_in address;
+
+    cout << "player count is: " << players.playerCount() << "\n";
+
+    players.addPlayer(address, "Joe");
+    players.addPlayer(address, "John");
+    cout << "player count is: " << players.playerCount() << "\n";
+
+    int id = players.findPlayer("John");
+    cout << "Player ID found: " << id  << "\n";
+
+    bool isAlive = players.isAlive(id);
+    cout << "Player id " << id  << " is " << isAlive << "\n";
 
 	return 0;
 }

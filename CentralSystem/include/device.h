@@ -9,15 +9,18 @@
 #define DEVICE_H_
 
 #include <iomanip>
+#include <netdb.h>
+#include <cassert>
 
 class Device {
 
 public:
-    Device(int id_value, int ipAddress_value);
+    Device(int id, sockaddr_in address);
     ~Device();
 
+protected:
+    sockaddr_in address;
     int id;
-    int ipAddress;
     int batteryLevel;
     int points;
     int aux0;
@@ -26,6 +29,9 @@ public:
     int aux3;
     int aux4;
 
+    friend class Players;
+    friend class Weapons;
+    friend class BaseStations;
 };
 
 #endif /* DEVICE_H_ */

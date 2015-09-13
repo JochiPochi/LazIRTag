@@ -2,11 +2,11 @@
 
 using namespace std;
 
-Weapon::Weapon(int id_value, int ipAddress_value, int damage_value) :
-        Device(id_value, ipAddress_value)
+Weapon::Weapon(int id, sockaddr_in address) :
+        Device(id, address)
 {
-   damage = damage_value;
-   ammo = 0;
+   this->damage = 0;
+   this->ammo = 0;
 }
 
 Weapon::~Weapon()

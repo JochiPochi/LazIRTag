@@ -6,9 +6,10 @@
 class BaseStation : public Device {
 
 public:
-    BaseStation(int id_value, int ipAddress_value);
+    BaseStation(int id, sockaddr_in address);
     ~BaseStation();
 
+private:
     int hp;
 };
 

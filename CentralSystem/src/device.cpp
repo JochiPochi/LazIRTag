@@ -5,16 +5,16 @@
 
 using namespace std;
 
-Device::Device(int id_value, int ipAddress_value)
+Device::Device(int id, sockaddr_in address)
 {
-   id = id_value;
-   ipAddress = ipAddress_value;
-   points = 0;
-   aux0 = 0;
-   aux1 = 0;
-   aux2 = 0;
-   aux3 = 0;
-   aux4 = 0;
+    this->id = id;
+    this->address = address;
+    this->points = 0;
+    this->aux0 = 0;
+    this->aux1 = 0;
+    this->aux2 = 0;
+    this->aux3 = 0;
+    this->aux4 = 0;
 }
 
 Device::~Device()
