@@ -14,6 +14,8 @@ private:
     std::string name;
     int hp;
     int points;
+    int weapon_id;
+    void printPlayerInfo();
 
     friend class Players;
 };
@@ -23,18 +25,26 @@ class Players {
 public:
     Players();
     ~Players();
-    int findPlayer(std::string name);
-    void addPlayer(sockaddr_in address, std::string name);
+    int findPlayerByName(std::string name);
+    int findPlayerByWeaopn(int weapon_id);
+    void printInfo(int id);
+    bool addPlayer(sockaddr_in address, std::string name);
     int playerCount();
+    std::string getPlayerName(int id);
     bool isAlive(int id);
     void takeDamage(int id, int damage);
     void setPlayerHealth(int id, int hp);
     int getPlayerHealth(int id);
-    std::string getPlayerName(int id);
+    int getBatteryLevel(int id);
+    int getPoints(int id);
+    void setPoints(int id, int points);
+    void addPoints(int id, int points);
+    void setWeapon(int id, int weapon_id);
+    int getWeapon(int id, int weapon_id);
 
 private:
     std::vector<Player> players;
-    Player *getPlayer(int id);
+    Player *getPlayerPointer(int id);
 };
 
 #endif /* PLAYER_H_ */

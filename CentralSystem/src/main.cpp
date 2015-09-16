@@ -27,9 +27,7 @@ int main(int argc, char *argv[]) {
     int id = players.findPlayer("John");
     cout << "Player ID found: " << id  << "\n";
 
-    bool isAlive = players.isAlive(id);
-    cout << "Player id " << id  << " is " << isAlive << "\n";
-
+    players.printInfo(id);
 	return 0;
 }
 

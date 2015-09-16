@@ -28,10 +28,7 @@ protected:
     int aux2;
     int aux3;
     int aux4;
-
-    friend class Players;
-    friend class Weapons;
-    friend class BaseStations;
+    void printDeviceInfo();
 };
 
 #endif /* DEVICE_H_ */

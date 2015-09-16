@@ -1,4 +1,6 @@
 #include <player.h>
+#include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -9,11 +11,24 @@ Player::Player(int id, sockaddr_in address, string name) :
     this->name = name;
     this->hp = 0;
     this->points = 0;
+    this->weapon_id = 0;
 }
 
 Player::~Player()
 {
     // Do nothing.
+}
+
+void Player::printPlayerInfo()
+{
+    cout << "Player Properties:\n";
+    cout << "   name   = " << this->name   << "\n";
+    cout << "   points = " << this->points << "\n";
+    cout << "   hp     = " << this->hp     << "\n";
+
+    this->printDeviceInfo();
+
+    return;
 }
 
 /******************* Players *******************/
@@ -27,7 +42,35 @@ Players::~Players()
     // Do nothing.
 }
 
-void Players::addPlayer(sockaddr_in address, std::string name)
+/*
+ *Players::getPlayerPointer() looks up player from players vector based on id
+ * returns pointer to player object if the player id found. Otherwise return NULL
+ */
+Player* Players::getPlayerPointer(int id)
+{
+    for (std::vector<Player>::iterator it = this->players.begin();
+                                       it != this->players.end(); ++it) {
+       if (it->id== id) {
+           return &(*it);
+        }
+    }
+
+    /* Player not found */
+    return NULL;
+}
+
+void Players::printInfo(int id)
+{
+    Player *player = getPlayerPointer(id);
+    if (player == NULL) {
+        assert(false);
+    }
+
+    player->printPlayerInfo();
+    return;
+}
+
+bool Players::addPlayer(sockaddr_in address, std::string name)
 {
     bool id_obtained = false;
     int id = 1;
@@ -42,11 +85,24 @@ void Players::addPlayer(sockaddr_in address, std::string name)
                 id++;
                 break;
             }
-
         }
 
         if (found_matching_id == false) {
             id_obtained = true;
+        }
+    }
+
+    /* Make sure name is not taken */
+    int dummy_id = findPlayerByName(name);
+    if (dummy_id != 0) {
+        return false;
+    }
+
+    /* Make sure address is not already taken */
+    for(std::vector<Player>::iterator it = this->players.begin();
+                                      it != this->players.end(); ++it) {
+       if (memcmp(&(it->address), &address, sizeof(sockaddr_in))) {
+            return false;
         }
     }
 
@@ -56,7 +112,7 @@ void Players::addPlayer(sockaddr_in address, std::string name)
     /* Add player to players vector */
     this->players.push_back(player);
 
-    return;
+    return true;
 }
 
 int Players::playerCount()
@@ -65,14 +121,26 @@ int Players::playerCount()
 }
 
 /* Lookup player by name. Returns player id if found, otherwise return 0. */
-int Players::findPlayer(string name)
+int Players::findPlayerByName(string name)
 {
     for (std::vector<Player>::iterator it = this->players.begin();
                                        it != this->players.end(); ++it) {
        if (it->name == name) {
            return it->id;
         }
+    }
 
+    /* Player not found */
+    return 0;
+}
+
+int Players::findPlayerByWeapon(int weapon_id)
+{
+    for (std::vector<Player>::iterator it = this->players.begin();
+                                       it != this->players.end(); ++it) {
+       if (it->weapon_id == weapon_id) {
+           return it->id;
+        }
     }
 
     /* Player not found */
@@ -81,7 +149,7 @@ int Players::findPlayer(string name)
 
 bool Players::isAlive(int id)
 {
-    Player *player = getPlayer(id);
+    Player *player = getPlayerPointer(id);
     if (player == NULL) {
         assert(false);
     }
@@ -92,7 +160,7 @@ bool Players::isAlive(int id)
 
 void Players::takeDamage(int id, int damage)
 {
-    Player *player = getPlayer(id);
+    Player *player = getPlayerPointer(id);
     if (player == NULL) {
         assert(false);
     }
@@ -109,7 +177,7 @@ void Players::takeDamage(int id, int damage)
  */
 int Players::getPlayerHealth(int id)
 {
-    Player *player = getPlayer(id);
+    Player *player = getPlayerPointer(id);
     if (player == NULL) {
         assert(false);
     }
@@ -122,7 +190,7 @@ int Players::getPlayerHealth(int id)
  */
 void Players::setPlayerHealth(int id, int hp)
 {
-    Player *player = getPlayer(id);
+    Player *player = getPlayerPointer(id);
     if (player == NULL) {
         assert(false);
     }
@@ -137,7 +205,7 @@ void Players::setPlayerHealth(int id, int hp)
  */
 std::string Players::getPlayerName(int id)
 {
-    Player *player = getPlayer(id);
+    Player *player = getPlayerPointer(id);
     if (player == NULL) {
         assert(false);
     }
@@ -146,19 +214,45 @@ std::string Players::getPlayerName(int id)
     return name;
 }
 
-/*
- *Players::getPlayer() looks up player from players vector based on id
- * returns pointer to player object if the player id found. Otherwise return NULL
- */
-Player* Players::getPlayer(int id)
+
+int Players::getBatteryLevel(int id)
 {
-    for (std::vector<Player>::iterator it = this->players.begin();
-                                       it != this->players.end(); ++it) {
-       if (it->id== id) {
-           return &(*it);
-        }
+    Player *player = getPlayerPointer(id);
+    if (player == NULL) {
+        assert(false);
     }
 
-    /* Player not found */
-    return NULL;
+    int battery = player->batteryLevel;
+    return battery;
 }
+
+int Players::getPoints(int id)
+{
+    Player *player = getPlayerPointer(id);
+    if (player == NULL) {
+        assert(false);
+    }
+
+    int points = player->points;
+    return points;
+}
+
+void Players::setWeapon(int id, int weapon_id)
+{
+    Player *player = getPlayerPointer(id);
+    if (player == NULL) {
+        assert(false);
+    }
+
+    player->weapon_id = weapon_id;
+    return;
+}
+
+int Players::getWeapon(int id, int weapon_id)
+{
+    Player *player = getPlayerPointer(id);
+    if (player == NULL) {
+        assert(false);
+    }
+
+    return player->weapon_id;

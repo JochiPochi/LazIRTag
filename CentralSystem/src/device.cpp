@@ -2,6 +2,7 @@
 #include <player.h>
 #include <weapon.h>
 #include <basestation.h>
+#include <iostream>
 
 using namespace std;
 
@@ -20,4 +21,14 @@ Device::Device(int id, sockaddr_in address)
 Device::~Device()
 {
     // Do nothing.
+}
+
+void Device::printDeviceInfo()
+{
+    cout << "Device Properties:\n";
+    cout << "   id      = " << this->id           << "\n";
+    cout << "   points  = " << this->points       << "\n";
+    cout << "   battery = " << this->batteryLevel << "\n";
+
+    return;
 }
