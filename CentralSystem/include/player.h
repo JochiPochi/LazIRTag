@@ -26,13 +26,13 @@ public:
     Players();
     ~Players();
     int findPlayerByName(std::string name);
-    int findPlayerByWeaopn(int weapon_id);
+    int findPlayerByWeapon(int weapon_id);
     void printInfo(int id);
     bool addPlayer(sockaddr_in address, std::string name);
     int playerCount();
     std::string getPlayerName(int id);
     bool isAlive(int id);
-    void takeDamage(int id, int damage);
+    void inflictDamage(int id, unsigned int damage);
     void setPlayerHealth(int id, int hp);
     int getPlayerHealth(int id);
     int getBatteryLevel(int id);

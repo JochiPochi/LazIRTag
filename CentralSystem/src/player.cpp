@@ -134,6 +134,8 @@ int Players::findPlayerByName(string name)
     return 0;
 }
 
+
+/* Lookup player by weapon. Returns player id if found, otherwise return 0. */
 int Players::findPlayerByWeapon(int weapon_id)
 {
     for (std::vector<Player>::iterator it = this->players.begin();
@@ -147,6 +149,7 @@ int Players::findPlayerByWeapon(int weapon_id)
     return 0;
 }
 
+/* returns true if player is alive, otherwise return false */
 bool Players::isAlive(int id)
 {
     Player *player = getPlayerPointer(id);
@@ -158,7 +161,8 @@ bool Players::isAlive(int id)
     return isAlive;
 }
 
-void Players::takeDamage(int id, int damage)
+/* inflicts damage on a player */
+void Players::inflictDamage(int id, unsigned int damage)
 {
     Player *player = getPlayerPointer(id);
     if (player == NULL) {
@@ -166,7 +170,7 @@ void Players::takeDamage(int id, int damage)
     }
 
     /* Player cannot lose more hp than the player currently has */
-    int effectiveDamage = (damage > player->hp) ? player->hp : damage;
+    int effectiveDamage = ((int)damage > player->hp) ? player->hp : damage;
     player->hp -= effectiveDamage;
     return;
 }
@@ -256,3 +260,4 @@ int Players::getWeapon(int id, int weapon_id)
     }
 
     return player->weapon_id;
+}

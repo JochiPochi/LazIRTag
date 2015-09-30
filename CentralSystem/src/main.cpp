@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     players.addPlayer(address, "John");
     cout << "player count is: " << players.playerCount() << "\n";
 
-    int id = players.findPlayer("John");
+    int id = players.findPlayerByName("John");
     cout << "Player ID found: " << id  << "\n";
 
     players.printInfo(id);
