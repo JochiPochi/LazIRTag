@@ -1,0 +1,84 @@
+eeschema (2013-07-07 BZR 4022)-stable  >> Creation date: 5/23/2015 7:50:17 PM
+#Cmp ( order = Reference )
+| C1         0.1uF       
+| C2         4.7uF       
+| C3         100uF       
+| C4         4.7uF       
+| C5         22pF        
+| C6         22pF        
+| C7         0.1uF       
+| C8         4.7 uF      
+| D2         RED         
+| D3         LED         
+| D4         LED         
+| IC1        ATMEGA328-P 
+| J1         MICRO_USB   
+| JP1        JUMPER      
+| JP2        JUMPER      
+| M1         RUMBLE      
+| P1         2P_CGRID_M  
+| P2         6pM CGrid   
+| P3         6pM Header  
+| P4         8pF Header  
+| Q1         NPN         
+| Q2         NPN         
+| Q3         NPN         
+| Q4         NPN         
+| R1         330         
+| R2         10k         
+| R3         10k         
+| R4         2k          
+| R5         560         
+| R6         1k          
+| R7         10k         
+| R8         220         
+| S1         SLIDESWITCH 
+| U1         MCP73831    
+| U2         LM1084IT-3.3/NOPB
+| U3         14SLED      
+| U4         ESP8266     
+| X1         CRYSTAL     
+#End Cmp
+
+#Cmp ( order = Value )
+| 22pF         C5        
+| 22pF         C6        
+| 0.1uF        C1        
+| 0.1uF        C7        
+| 4.7uF        C2        
+| 4.7uF        C4        
+| 100uF        C3        
+| 4.7 uF       C8        
+| RED          D2        
+| LED          D3        
+| LED          D4        
+| ATMEGA328-P  IC1       
+| MICRO_USB    J1        
+| JUMPER       JP2       
+| JUMPER       JP1       
+| RUMBLE       M1        
+| 8pF Header   P4        
+| 6pM CGrid    P2        
+| 6pM Header   P3        
+| 2P_CGRID_M   P1        
+| NPN          Q1        
+| NPN          Q2        
+| NPN          Q3        
+| NPN          Q4        
+| 220          R8        
+| 330          R1        
+| 560          R5        
+| 1k           R6        
+| 2k           R4        
+| 10k          R2        
+| 10k          R3        
+| 10k          R7        
+| SLIDESWITCH  S1        
+| MCP73831     U1        
+| 14SLED       U3        
+| LM1084IT-3.3/NOPB U2        
+| ESP8266      U4        
+| CRYSTAL      X1        
+#End Cmp
+
+#End List
