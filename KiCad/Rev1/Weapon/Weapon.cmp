@@ -1,0 +1,241 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 4/28/2015 9:00:30 PM
+
+BeginCmp
+TimeStamp = /55012331;
+Reference = C1;
+ValeurCmp = 0.1uF;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012347;
+Reference = C2;
+ValeurCmp = 4.7uF;
+IdModule  = C2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501234F;
+Reference = C3;
+ValeurCmp = 4.7uF;
+IdModule  = C2;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012330;
+Reference = C4;
+ValeurCmp = 22pF;
+IdModule  = C2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501232F;
+Reference = C5;
+ValeurCmp = 22pF;
+IdModule  = C2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501267A;
+Reference = C6;
+ValeurCmp = 100uF;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012337;
+Reference = C7;
+ValeurCmp = 0.1uF;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501234B;
+Reference = D1;
+ValeurCmp = RED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /550129CB;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012343;
+Reference = D3;
+ValeurCmp = LED;
+IdModule  = LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501232B;
+Reference = IC1;
+ValeurCmp = ATMEGA328-P;
+IdModule  = DIP-28__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012345;
+Reference = J1;
+ValeurCmp = MICRO_USB;
+IdModule  = MicroUSB;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F9CED;
+Reference = LS1;
+ValeurCmp = BUZZER;
+IdModule  = AI-1223Buzzer;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012354;
+Reference = P1;
+ValeurCmp = 2P_CGRID_M;
+IdModule  = 2PinMaleCGrid90Deg;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501232C;
+Reference = P2;
+ValeurCmp = USB-TTL;
+IdModule  = PIN_ARRAY-6X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /550128C9;
+Reference = P3;
+ValeurCmp = 2P_CGRID_M;
+IdModule  = 2PinMaleCGrid90Deg;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F9896;
+Reference = Q1;
+ValeurCmp = NPN;
+IdModule  = TO92;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501232E;
+Reference = Q2;
+ValeurCmp = NPN;
+IdModule  = TO92;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501234A;
+Reference = R1;
+ValeurCmp = 330;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501234D;
+Reference = R2;
+ValeurCmp = 2k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F989C;
+Reference = R3;
+ValeurCmp = 560;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012D9E;
+Reference = R4;
+ValeurCmp = 10k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012DAD;
+Reference = R5;
+ValeurCmp = 10k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /550129C5;
+Reference = R6;
+ValeurCmp = 1k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /55402F27;
+Reference = R7;
+ValeurCmp = 220;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012341;
+Reference = R8;
+ValeurCmp = 560;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012B59;
+Reference = R9;
+ValeurCmp = 10k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012339;
+Reference = R10;
+ValeurCmp = 10k;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012342;
+Reference = R11;
+ValeurCmp = 330;
+IdModule  = R4;
+EndCmp
+
+BeginCmp
+TimeStamp = /550F6271;
+Reference = S1;
+ValeurCmp = SLIDESWITCH;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012349;
+Reference = U1;
+ValeurCmp = MCP73831;
+IdModule  = SOT23-5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501232D;
+Reference = U2;
+ValeurCmp = RFID-RC522;
+IdModule  = RFID-RC522;
+EndCmp
+
+BeginCmp
+TimeStamp = /5501260F;
+Reference = U3;
+ValeurCmp = LM1084IT-3.3/NOPB;
+IdModule  = TO220;
+EndCmp
+
+BeginCmp
+TimeStamp = /55012334;
+Reference = X1;
+ValeurCmp = 16MHz;
+IdModule  = HC-49V;
+EndCmp
+
+EndListe
